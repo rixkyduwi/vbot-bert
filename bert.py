@@ -105,6 +105,7 @@ def bert_prediction(user,question):
           solusi= mengatasi_Kolera
         else:
           status = False
+        print(status)
         if(status == False):
           dictlogs.update({"status": status,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
         else:
