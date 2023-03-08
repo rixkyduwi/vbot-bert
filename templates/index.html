@@ -95,6 +95,216 @@
     color: #fff;
 }
   </style>
+      <style type="text/css">
+        .list-group-item {
+            user-select: none;
+
+        }
+
+        .dicek {
+            font-size: 9px;
+            font-style: italic;
+            color: #676765;
+        }
+
+        .list-group-item:last-child {
+            border-top-left-radius: 10px ;
+            border-top-right-radius: 10px ;
+            border-bottom-right-radius: 10px ;
+            border-bottom-left-radius: 10px ;
+        }
+
+        .list-group input[type="radio"] {
+            display: none;
+        }
+
+        .list-group1 input[type="radio"] {
+            display: none;
+        }
+
+        .list-group input[type="radio"]+.list-group-item {
+            text-align: center;
+            cursor: pointer;
+            background-color: #282c30;
+            color: #dcddeb;
+            border-color: transparent;
+            border: 2px solid #282c30;
+            font-size: 12px;
+        }
+
+        .nominal-price {
+            font-size: 10px;
+            text-align: left;
+        }
+
+        .name-prod {
+            /* font-weight:600; */
+            color: #ffffff;
+            /* padding: 0%; */
+            text-align: left;
+        }
+
+        .list-group input[type="radio"]+label>.row>.col>.row>.nominal-price {
+            color: #dee2e6;
+            /* font-style: bold; */
+            font-family: 'bangjeff-comic';
+            font-style: italic;
+        }
+
+        .list-group input[type="radio"]:checked+label>.row>.col>.row>.nominal-price {
+            color: #ffff00;
+            font-family: 'bangjeff-comic';
+            /* font-style: bold; */
+            font-style: italic;
+        }
+
+        .list-group input[type="radio"]+.list-group-item:before {
+            /* content: "\2713"; */
+            color: transparent;
+            font-weight: bold;
+            /* margin-right: 1em; */
+
+        }
+
+        .list-group input[type="radio"]+.list-group-item:hover {
+            cursor: pointer;
+            background-color: #adadadd3;
+            color: #ffffff;
+            border-color: #adadad43;
+
+            font-size: 12px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .list-group input[type="radio"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+
+        .list-group input[type="radio"]:checked+.list-group-item:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 28px;
+            height: 26px;
+            content: "";
+            background: url(../../img/verified-blue.png) top/cover;
+            text-align: center;
+        }
+
+        .list-group input[type="radio"]:checked+.list-group-item {
+            color: #ef222243;
+            font-size: 12px;
+            border: 2px solid #c9c9c993;
+            box-shadow: 0 0 2.22222vw #ababab, inset 0 2.40741vw 8.05556vw #adadad43, inset 0 -8.24074vw 11.48148vw #adadad43;
+            overflow: hidden;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item {
+            background-color: #ffffff;
+            color: #fe6c17;
+            font-size: 12px;
+            display: block;
+            -webkit-filter: grayscale(0%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(0%);
+        }
+
+        .list-group1 input[type="radio"]+.list-group-item {
+            text-align: center;
+            cursor: pointer;
+            /* background-color: #e8e8e8;
+          color: #fe6c17; */
+            border-color: transparent;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+            font-size: 12px;
+            border-radius: 3px;
+            background: rgb(208, 208, 208);
+            -webkit-filter: grayscale(100%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }
+
+        .list-group1 input[type="radio"]+.list-group-item:hover {
+            cursor: pointer;
+            background-color: #ffffffb5;
+            color: #fe6c17;
+            border-color: #ffffff;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+            font-size: 12px;
+            border-radius: 3px;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+
+
+        .list-group1 input[type="radio"]:checked+.list-group-item:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 28px;
+            height: 26px;
+            content: "";
+            background: url(../../img/verified-blue.png) top/cover;
+            filter: drop-shadow(2px 4px 6px black);
+            text-align: center;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item {
+            background-color: #ffffff;
+            color: #0d6efd;
+            font-size: 12px;
+            display: block;
+            -webkit-filter: grayscale(0%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(0%);
+        }
+
+        .list-group1 input[type="radio"]+.list-group-item {
+            text-align: center;
+            cursor: pointer;
+            /* background-color: #e8e8e8;
+              color: #0d6efd; */
+            border-color: transparent;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+            font-size: 12px;
+            border-radius: 3px;
+            background: rgb(208, 208, 208);
+            -webkit-filter: grayscale(100%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }
+
+        .list-group1 input[type="radio"]+.list-group-item:hover {
+            cursor: pointer;
+            background-color: #ffffffb2;
+            color: #0d6efd;
+            border-color: #ffffff;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+            font-size: 12px;
+            border-radius: 3px;
+        }
+
+        .list-group1 input[type="radio"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+
+        .text-yellow {
+            color: #FFFF00 !important;
+        }
+    </style>
 
 </head>
 
@@ -122,6 +332,44 @@
         </div>
       </div>
       <div class="msg-bubble" style="margin-left: 56px;">
+        <div class="row row-cols-2">
+          <div class="col-lg-4 mt-3">
+              <div class="list-group shadow h-100">
+                  <input type="radio" name="inlineRadioOptions" id="nominal-19"
+                      value="GM V - Epic V Rp 100.000" data-type="diamond" data-product_id="8">
+                  <label for="nominal-19" class="list-group-item h-100">
+                      <div class="row">
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col name-prod">Flash Sale / Win</div>
+                              </div>
+                              <div class="row">
+                                  <div class="col nominal-price">Rp 4.000</div>
+                              </div>
+                          </div>
+                      </div>
+                  </label>
+              </div>
+          </div>
+          <div class="col-lg-4 mt-3">
+              <div class="list-group shadow h-100">
+                  <input type="radio" name="inlineRadioOptions" id="nominal-172"
+                      value="GM V - Legends V Rp 233.500" data-type="diamond" data-product_id="8">
+                  <label for="nominal-172" class="list-group-item h-100">
+                      <div class="row">
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col name-prod">Joki Classic / Win</div>
+                              </div>
+                              <div class="row">
+                                  <div class="col nominal-price">Rp 5.000</div>
+                              </div>
+                          </div>
+                      </div>
+                  </label>
+              </div>
+          </div>
+      </div>
         <button id="deteksi" class="btn-light-success">deteksi penyakit</button>
         <button id="tips" class="btn-light-info" >tips hidup sehat</button>
         <button id="apotek" class="btn-light-danger" >apotek terdekat</button>
@@ -290,6 +538,18 @@ $('#apotek').click(function(){
   },500)
   setTimeout(() => {
     window.location.replace("https://www.google.com/maps/search/Apotek/")
+  }, 700)
+})
+$('#tips').click(function(){
+  const msgText = "Tips Hidup Sehat";
+  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+  msgerInput.value = "";
+  setTimeout(() => {
+  const msgTextbot = "silahkan tunggu sebentar";
+  appendMessage(BOT_NAME,BOT_IMG, "left", msgTextbot)
+  },500)
+  setTimeout(() => {
+    window.location.replace("/tips")
   }, 700)
 })
 })

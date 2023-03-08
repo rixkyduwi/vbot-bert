@@ -3,15 +3,16 @@ from flask_restful import Resource, Api
 from flask_httpauth import HTTPTokenAuth
 from flask_mysqldb import MySQL 
 from flask_cors import CORS
-from flask import Flask
 app = Flask(__name__)
+api = Api(app)
 mysql = MySQL()
+db = SQLAlchemy()
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vbot_bert.db'
 app.config['MYSQL_HOST']= 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD']  = ''
 app.config['MYSQL_DB'] = 'halosus'
-auth = HTTPTokenAuth(scheme='Bearer')
-api = Api(app)
 from bert import bert_prediction
 from scrapping_tips_hidup_sehat import tips
 class apipredict(Resource):
@@ -27,6 +28,10 @@ class apitips(Resource):
 @app.route("/")
 def index():
     return render_template("landingpage.html")
+@app.route("/tips")
+def tips_hidup_sehat():
+    data = tips()
+    return render_template("tips.html",data=data)
 @app.route("/chat")
 def chat():
     return render_template("index.html")
@@ -34,4 +39,5 @@ def chat():
 api.add_resource(apipredict, '/api/v1/model/predict', methods=['GET'])
 api.add_resource(apitips, '/api/v1/scrap/tips', methods=['GET'])
 mysql.init_app(app)
+db.init_app(app)
 CORS(app)

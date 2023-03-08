@@ -3,7 +3,8 @@ from flask import jsonify
 from transformers import BertTokenizerFast, BertForQuestionAnswering, Trainer, TrainingArguments
 from datetime import datetime
 from __init__ import mysql
-
+import openai
+openai.api_key ="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"
 device = "cuda" if torch.cuda.is_available() else "cpu" 
 torch.device(device) 
 modelCheckpoint = "indolem/indobert-base-uncased"
@@ -21,7 +22,11 @@ mengatasi_Pneumonia="cara mengatasinya : Terapi kausal Terapi ini dilakukan deng
 mengatasi_PES="cara mengatasinya : Penanganan terhadap penyakit pes membutuhkan perawatan inap di rumah sakit. Dokter akan meresepkan antibiotik untuk membunuh bakteri, serta obat-obatan lain sesuai dengan tanda dan gejala yang dialami oleh penderita tersebut."
 mengatasi_Kolera="cara mengatasinya : memperbanyak asupan cairan untuk mencegah dehidrasi akibat kolera Bila dehidrasi sudah diatasi, tujuan pengobatan selanjutnya adalah untuk menggantikan jumlah cairan yang hilang karena diare dan muntah. Pengobatan awal dengan tetrasiklin atau antibiotik lainnya bisa membunuh bakteri dan biasanya akan menghentikan diare dalam 48 jam.Bila berada di daerah resisten dengan wabah kolera atau Vibrio cholerae, dapat digunakan furozolidone. Makanan padat bisa diberikan setelah muntah-muntah berhenti dan nafsu makan sudah kembali.Pencegahan: Untuk mencegah kolera, penting untuk melakukan penjernihan cadangan air dan pembuangan tinja yang memenuhi standar. Selain itu, minumlah air yang sudah terlebih dahulu dimasak. Hindari mengonsumsi sayuran mentah atau ikan dan kerang yang tidak dimasak sampai matang.Pemberian antibiotik tetrasiklin juga bisa membantu mencegah penyakit pada orang-orang yang sama-sama menggunakan perabotan rumah dengan penderita kolera. Sementara itu, vaksinasi kolera tidak terlalu dianjurkan karena perlindungan yang diberikan tidak menyeluruh."
 
-context="maag atau sindrom dispepsia adalah penyakit yang mempunyai gejala Nyeri ulu hati, mual, dan muntah setelah makan. Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut. Cacar air adalah penyakit yang mempunyai gejala bintik kemerahan di kulit yang menggelembung maupun tidak, melepuh, dan terasa gatal. Tifus adalah penyakit yang mempunyai gejala demam yang suhunya naik secara bertahap hingga membuat pendeita menggigil. Campak adalah penyakit yang mempunyai gejala naiknya suhu tubuh, batuk, nyeri tenggorokan, nyeri otot, hingga ruam pada kulit yang muncul sekitar 7-14 hari setelah terinfeksi virus.influenza adalah penyakit yang mempunyai gejala Demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala. PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba Nyeri kepala Rasa lelah Nyeri otot Batuk, dengan dahak yang disertai darah Kesulitan bernapas Mual dan muntah Demam tinggi Nyeri kepala Rasa lemah .Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput "
+cur = mysql.connection.cursor()
+dictlogs.update({"status": status,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
+cur.execute("INSERT INTO history(pertanyaan,status,keterangan) VALUES(%s,%s,%s)" , (question,status,"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"))
+mysql.connection.commit()
+context="maag matau sindrom dispepsia adalah penyakit yang mempunyai gejala Nyeri ulu hati, mual, dan muntah setelah makan. Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut. Cacar air adalah penyakit yang mempunyai gejala bintik kemerahan di kulit yang menggelembung maupun tidak, melepuh, dan terasa gatal. Tifus adalah penyakit yang mempunyai gejala demam yang suhunya naik secara bertahap hingga membuat pendeita menggigil. Campak adalah penyakit yang mempunyai gejala naiknya suhu tubuh, batuk, nyeri tenggorokan, nyeri otot, hingga ruam pada kulit yang muncul sekitar 7-14 hari setelah terinfeksi virus.influenza adalah penyakit yang mempunyai gejala Demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala. PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba Nyeri kepala Rasa lelah Nyeri otot Batuk, dengan dahak yang disertai darah Kesulitan bernapas Mual dan muntah Demam tinggi Nyeri kepala Rasa lemah .Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput "
 context2= "Sakit kepala: Ada beberapa jenis sakit kepala seperti migrain, sakit kepala tegang, dan sakit kepala sinus. Diare: Gejala diare antara lain perut kembung, mual, dan buang air besar yang berlebihan dan berair. Sakit gigi: Gejala sakit gigi antara lain rasa sakit pada gigi atau gusi, dan sakit kepala. Sakit perut: Gejala sakit perut antara lain rasa sakit pada perut, kembung, dan mual. Sariawan: Gejala sariawan antara lain luka pada mulut, terutama pada lidah atau bagian dalam pipi.Ruam kulit: Gejala ruam kulit antara lain gatal-gatal dan bercak-bercak pada kulit. Sakit tenggorokan: Gejala sakit tenggorokan antara lain sakit saat menelan dan tenggorokan merah. Gigitan serangga: Gejala gigitan serangga antara lain rasa sakit, gatal-gatal, dan bengkak pada kulit. Sakit punggung: Gejala sakit punggung antara lain rasa sakit pada bagian punggung bawah dan sulit untuk bergerak."
 mengatasi_Sakit_kepala = "Cara penanganannya tergantung dari jenis sakit kepala, bisa dengan minum obat pereda nyeri seperti paracetamol atau melakukan teknik relaksasi."
 mengatasi_Diare ="Cara penanganannya yaitu minum banyak air putih dan elektrolit, konsumsi makanan ringan seperti roti tawar, dan hindari makanan yang sulit dicerna."
@@ -33,10 +38,10 @@ mengatasi_Sakit_tenggorokan = "Cara penanganannya yaitu berkumur dengan air gara
 mengatasi_Gigitan_serangga = "Cara penanganannya yaitu membersihkan area yang digigit dengan air dan sabun, konsumsi obat pereda nyeri atau antihistamin, dan hindari menggaruk area yang digigit."
 mengatasi_Sakit_pinggang = "Cara penanganannya yaitu istirahat yang cukup, pergi ke"
 
-gmaps_rumah_sakit = "Rumah Sakit terdekat =>"
-gmaps_puskesmas = "Puskesmas terdekat =>"
-gmaps_apotek = "Apotek terdekat =>"
-gmaps_urut = "Tempat pijat / urut disekitar anda =>"
+gmaps_rumah_sakit = "Rumah Sakit terdekat => "
+gmaps_puskesmas = "Puskesmas terdekat => "
+gmaps_apotek = "Apotek terdekat => "
+gmaps_urut = "Tempat pijat / urut disekitar anda => "
 
 link_rumah_sakit = "https://www.google.com/maps/search/Rumah_sakit/"
 link_puskesmas = "https://www.google.com/maps/search/Puskesmas/"
@@ -140,18 +145,33 @@ def bert_prediction(question):
       print(status)
       cur = mysql.connection.cursor()
       if(status == False):
-        dictlogs.update({"status": status,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
-        cur.execute("INSERT INTO history(pertanyaan,status,keterangan) VALUES(%s,%s,%s)" , (question,status,"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"))
-        mysql.connection.commit()
+          dictlogs.update({"status": status,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
+      # mysql
+      #   cur.execute("INSERT INTO history(pertanyaan,status,keterangan) VALUES(%s,%s,%s)" , (question,status,"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"))
+      #   mysql.connection.commit()
+      # sqllite 
+      #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,status=status.keterangan="maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda",score=scoree,waktu_proses=str(datetime.now()-begin),)
+      #   db.session.add(book)
+      #   db.session.commit()
+      # mongodb 
+      #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,jawaban=candidate['text'],score=scoree,waktu_proses=str(datetime.now()-begin))
+      #   db.session.add(book)
+      #   db.session.commit()
       else:
-        dictlogs.update({"status": status,"jawaban": "berdasarkan gejala yang anda alami kemungkinan anda menderita penyakit "+nama_penyakit, "solusi": solusi,"gmaps":gmaps,"link":link})
-        cur.execute("INSERT INTO history(pertanyaan,status,nama_penyakit,solusi) VALUES(%s,%s,%s,%s)" , (question,status,nama_penyakit,solusi))
-        mysql.connection.commit()
+          dictlogs.update({"status": status,"jawaban": "berdasarkan gejala yang anda alami kemungkinan anda menderita penyakit "+nama_penyakit, "solusi": solusi,"gmaps":gmaps,"link":link})
+      # mysql
+      #   cur.execute("INSERT INTO history(pertanyaan,status,nama_penyakit,solusi) VALUES(%s,%s,%s,%s)" , (question,status,nama_penyakit,solusi))
+      #   mysql.connection.commit()
+      # sqllite 
+      #   book=  HISTORY(id=1,nama="guest",status=status,pertanyaan=question,nama_penyakit=nama_penyakit,solusi=solusi,score=scoree,waktu_proses=str(datetime.now()-begin),gmaps=gmaps,link=link)
+      #   db.session.add(book)
+      #   db.session.commit()
+      # mongodb
+      #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,jawaban=candidate['text'],score=scoree,waktu_proses=str(datetime.now()-begin))
+      #   db.session.add(book)
+      #   db.session.commit()
       respon_model.append(dictlogs)
-      #langsung save db 
-      #book=  HISTORY(id=1,nama="guest",pertanyaan=question,jawaban=candidate['text'],score=scoree,waktu_proses=str(datetime.now()-begin))
-      #db.session.add(book)
-      #db.session.commit()
+      
   elif question in context2:
     begin = datetime.now()
     encodedData = tokenizer(question, context2, padding=True, return_offsets_mapping=True, truncation="only_second", return_tensors="pt")
@@ -252,3 +272,19 @@ def bert_prediction(question):
     mysql.connection.commit()
     respon_model.append(dictlogs)
   return jsonify(respon_model)
+
+def random_question(ask):
+  prompt = (ask)
+
+  completions = openai.Completion.create(
+      engine="text-davinci-002",
+      prompt=prompt,
+      max_tokens=1024,
+      n=1,
+      stop=None,
+      temperature=0.5,
+  )
+
+  message = completions.choices[0].text
+  print(message)
+  return message
