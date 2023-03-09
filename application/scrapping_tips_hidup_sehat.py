@@ -4,7 +4,7 @@ import html5lib
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from flask import jsonify
-from __init__ import mysql
+from . import mysql
 
 
 def tips():

@@ -3,8 +3,7 @@ from flask_restful import Resource, Api
 from flask_httpauth import HTTPTokenAuth
 from flask_mysqldb import MySQL 
 from flask_cors import CORS
-from bert import bert_prediction
-from application.scrapping_tips_hidup_sehat import tips
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -26,6 +25,7 @@ class apitips(Resource):
     def get(self):
         response = tips()
         return response
+        
 @app.route("/")
 def index():
     return render_template("landingpage.html")
@@ -41,3 +41,6 @@ api.add_resource(apipredict, '/api/v1/model/predict', methods=['GET'])
 api.add_resource(apitips, '/api/v1/scrap/tips', methods=['GET'])
 mysql.init_app(app)
 CORS(app)
+
+from .bert import bert_prediction
+from .scrapping_tips_hidup_sehat import tips
