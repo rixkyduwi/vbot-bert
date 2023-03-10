@@ -3,18 +3,30 @@ from flask_restful import Resource, Api
 from flask_httpauth import HTTPTokenAuth
 from flask_mysqldb import MySQL 
 from flask_cors import CORS
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
+import MySQLdb
+mysql = MySQLdb.connect(
+  host= os.getenv("HOST"),
+  user=os.getenv("USERNAME"),
+  passwd= os.getenv("PASSWORD"),
+  db= os.getenv("DATABASE"),
+  ssl_mode = "VERIFY_IDENTITY",
+  ssl      = {
+    "ca": "/etc/ssl/cert.pem"
+  }
+)
 
 app = Flask(__name__)
 api = Api(app)
-mysql = MySQL()
+#mysql = MySQL()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vbot_bert.db'
-
-app.config['MYSQL_HOST']= 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD']  = ''
-app.config['MYSQL_DB'] = 'halosus'
+# app.config['MYSQL_HOST']= 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD']  = ''
+# app.config['MYSQL_DB'] = 'halosus'
 
 class apipredict(Resource):
     def get(self):
@@ -40,7 +52,7 @@ def chat():
 
 api.add_resource(apipredict, '/api/v1/model/predict', methods=['GET'])
 api.add_resource(apitips, '/api/v1/scrap/tips', methods=['GET'])
-mysql.init_app(app)
+
 CORS(app)
 
 from .bert import bert_prediction
