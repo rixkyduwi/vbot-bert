@@ -10,6 +10,7 @@ api = Api(app)
 mysql = MySQL()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vbot_bert.db'
+
 app.config['MYSQL_HOST']= 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD']  = ''
@@ -25,7 +26,7 @@ class apitips(Resource):
     def get(self):
         response = tips()
         return response
-        
+
 @app.route("/")
 def index():
     return render_template("landingpage.html")
