@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halo SUS</title>
+    <title>Input Dokter</title>
     <link
       rel="canonical"
       href="https://www.wrappixel.com/templates/adminpro/"
@@ -61,8 +61,8 @@
     <div class="page-titles">
         <div class="row">
           <div class="col-lg-8 col-md-6 col-12 align-self-center">
-            <h4 class="text-muted mb-0 fw-normal">Selamat Datang di</h4>
-            <h1 class="mb-0 fw-bold">Chatbot HaloSus</h1>
+            <h4 class="text-muted mb-0 fw-normal">Selamat Datang Dokter</h4>
+            <h1 class="mb-0 fw-bold">Blabla </h1>
           </div>
           <div class="
               col-lg-4 col-md-6
@@ -70,34 +70,76 @@
               align-items-center
               justify-content-end
             ">
-            <a href="/input-dokter" class="btn btn-info d-flex align-items-center ms-2">
-              Login Dokter
+            <a href="/" class="btn btn-info d-flex align-items-center ms-2">
+              Logout
             </a>
           </div>
         </div>
       </div>
     <div class="container-fluid">
+      
         <div class="row">
-            <div class="col-lg-6" style="">
-                    <div style="margin-top: 130px; margin-left: 200px;">
-                        <h1>fitur fitur yang kami tawarkan:</h1> 
-                        <br>
-                        <ul style="text-decoration: none;">
-                            <li> Deteksi Penyakit Berdasarkan Gejala</li>
-                            <li> Tips Hidup Sehat </li>
-                            <li> Saran Lokasi Apotek terdekat </li>
-                        </ul>
-                        <button class="btn-light-success" onclick="location.replace('/chat')">mulai chat</button>
-                    </div>
-                  <div class="resize-triggers"><div class="expand-trigger"><div style="width: 450px; height: 419px;"></div></div><div class="contract-trigger"></div></div></div>
-                
-              <div class="col-lg-6">
-                    <img src="../static/images/backgroundd.jpeg" alt="welcome image">
-                    <div class="resize-triggers"><div class="expand-trigger"><div style="width: 450px; height: 419px;"></div></div><div class="contract-trigger"></div></div></div>
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header bg-info">
+                  <h4 class="mb-0 text-white">Input Dokter</h4>
+                </div>
+                <form action="/api/v1/dokter/input" method="post" class="form-horizontal">
+                  
+                  <div>
+                    <div class="card-body">
+                      <h4 class="card-title">Masukan Nama Penyakit dan Gejala yang berhubungan dengan penyakit tersebut serta cara pengobatan / penanganannya dan rekomendasi tempat rujukan untuk informasi lebih lanjut</h4>
+                      <div class="row pt-3">
+                        <div class="col-md-12">
+                          <div class="mb-3">
+    <input type="hidden"class="form-control" name="id_dokter" value="123">
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="mb-3"><label>
+    Nama Penyakit
+  </label>
+    <input type="text" class="form-control"placeholder="masukan nama penyakit" name="nama_penyakit">
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="mb-3"><label>
+    Masukan Gejala apabila lebih dari 1 gunakan , (koma)
+  </label>
+    <input type="text" class="form-control"placeholder="masukan gejala" name="gejala" id="">
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="mb-3"><label>
+    Masukan cara pengobatan / penyegahannya 
+  </label>
+    <input type="text"class="form-control" placeholder="masukan cara pengobatan / penyegahannya" name="pencegahan" id="">
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="mb-3"><label>
+    Pilih Tempat Rujukan
+  </label>
+    <select name="rujukan" class="form-control" id="">
+      <option value="Rumah Sakit">Rumah Sakit</option>
+      <option value="Apotek">Apotek</option>
+      <option value="Puskesmas">Puskesmas</option>
+      <option value="Pijat / Urut">Pijat / Urut</option>
+    </select>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="mb-3">
+    
+    <input class="form-control bg-success text-white" type="submit">
+  </div>
+</div>
+  </form>
+  </div>
+  </div>
+  </div>
 
-              </div>
-   
-    </div>
+</div>
 </div>
 
 

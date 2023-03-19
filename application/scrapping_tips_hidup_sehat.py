@@ -8,7 +8,7 @@ from . import mysql
 
 
 def tips():
-    link = 'https://www.alodokter.com/delapan-langkah-menuju-pola-hidup-sehat'
+    link = 'https://poltektegal.ac.id/berita/poltek-harber-ditunjuk-dinas-koperasi-ukm-provinsi-jateng-sebagai-lembaga-inkubator-wirausaha'
     req = requests.get(link)
     soup = bs(req.content, 'html5lib')
     
