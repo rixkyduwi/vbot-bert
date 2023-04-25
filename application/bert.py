@@ -3,6 +3,7 @@ from flask import jsonify
 from transformers import BertTokenizerFast, BertForQuestionAnswering
 from datetime import datetime
 from . import mysql
+from .nlpcnn import nlp
 import openai
 import textwrap
 import urllib, json
@@ -63,17 +64,7 @@ def convertTuple1(tup):
 def bert_prediction(question):
   respon_model = []
   dictlogs = {}
-  strs = """In my project, I have a bunch of strings that are read in from a file. 
-  Most of them, when printed in the command console, exceed 80 characters in length and wrap around, looking ugly."""
-  print(textwrap.fill(strs, 520))
-  # cara 1 menggunakan full string 
-  raw="""Politeknik Harapan Bersama (Poltek Harber) melakukan penandatanganan MoU dengan Lembaga Inkubator
-   dan Tenant Program Wirausaha/Wira Koperasi Dinas Koperasi UKM Provinsi Jawa tengah (Jateng) yang bertempat di Ruang Rapat Utama Gedung 
-   D, Poltek Harber, Senin, (27/02/23).Direktur Poltek Harber, Agung Hendarto mengatakan pihaknya merasa sangat terhormat karena Poltek Harber ditetapkan sebagai Lembaga Inkubator dan Tenant oleh Dinas Koperasi UKM Provinsi Jateng. “Kami juga merasa terhormat menjadi tempat koordinasi dalam rangka satu pembahasan identifikasi program inkubasi yang berlangsung selama 9 bulan. Koperasi menjadi pilihan Poltek Harber untuk ikut serta memajukan perekonomian Indonesia,” kata Agung.“Inisiasi dari Dinas Koperasi UKM Provinsi Jateng kita sambut dengan gembira. Semoga dengan amanah yang diberikan ini bisa terlaksana dengan baik dan bisa menghasilkan suatu produk yang go Internasional,“ kata Agung. Sementara itu, Kepala Dinas Koperasi UKM Provinsi Jateng yang diwakili oleh Kepala Bidang Kelembagaan, Bima Kartika, memberikan ucapan selamat atas terpilihnya Poltek Harber sebagai salah satu pelaksana program inkubator tahun 2023. Dalam Peraturan Pemerintah (PP) nomor 7 tahun 2021 bahwa setiap pemerintah provinsi/kota/kabupaten wajib untuk melaksanakan program inkubasi. “Semakin banyak kita berkolaborasi dan bersinergi maka akan semakin mudah membina koperasi dan UKM. Saat ini kita bicarakan kualitas koperasi di masa depan. Koperasi di Indonesia sudah sangat jauh tertinggal. Kita sekarang berguru ke Vietnam. 
-  Padahal tahun 80an Indonesia pernah menjadi guru untuk negara lain, seperti Malaysia,“ tambahnya. 
-  Penetapan Lembaga Inkubator dan Tenant 
-  Dinas Koperasi UKM Provinsi Jateng tahun ini dibagi menjadi tiga, yaitu Inkubator Wira Koperasi Kluster Shuttlecock Kabupaten Tegal di Poltek Harber, Inkubator Wira Koperasi Kluster Nanas Kabupaten Pemalang di ITB Pemalang, dan Inkubator Wira Koperasi Kluster Gula Kelapa/Gula Semut di UMP Kabupaten Purworejo. Program inkubasi berjalan selama 9 bulan, dari Februari hingga Oktober 2023. 
-"""
+
   # cara 2 menggunakan array 
   raw1 = [ "maag matau sindrom dispepsia adalah penyakit yang mempunyai gejala Nyeri ulu hati, mual, dan muntah setelah makan",
   "Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut,",
@@ -92,7 +83,7 @@ def bert_prediction(question):
       item = convertTuple1(fromdb[i])
       raw1.append(item)
   #
-  context = textwrap.wrap(raw, 520)
+  context = textwrap.wrap(raw1, 520)
   print(context)
   begin = datetime.now()
   for i in range(len(raw1)):
@@ -139,8 +130,13 @@ def bert_prediction(question):
 
     for i, candidate in enumerate(candidates):
       scoree = candidate['score']
+      print(candidate['text'])
       if scoree<=0:
-        dictlogs.update({"status": False,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
+        prediction = nlp(question)
+        if prediction[0]=='true':
+          dictlogs.update({"status": True,"deskripsi":prediction[1]})
+        else:
+          dictlogs.update({"status": False,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
       else:
         # rank = str(i+1) #convert number rank to string
         scoree = str(candidate['score']) # convert float32 to string
@@ -209,36 +205,16 @@ def bert_prediction(question):
               gmaps = detail[1]+' terdekat => '
               link = detail[2]
             else:
+
               status = True
         print(status)
         if(status == False):
             dictlogs.update({"status": status,"deskripsi":"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"})
-        # mysql
-        #   cur.execute("INSERT INTO history(pertanyaan,status,keterangan) VALUES(%s,%s,%s)" , (question,status,"maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda"))
-        #   mysql.connection.commit()
-        # sqllite 
-        #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,status=status.keterangan="maaf kami tidak berhasil mencari gejala yang sesuai dengan penyakit anda",score=scoree,waktu_proses=str(datetime.now()-begin),)
-        #   db.session.add(book)
-        #   db.session.commit()
-        # mongodb 
-        #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,jawaban=candidate['text'],score=scoree,waktu_proses=str(datetime.now()-begin))
-        #   db.session.add(book)
-        #   db.session.commit()
         else:
             dictlogs.update({"status": status,"jawaban": nama_penyakit})
-            break
-        # mysql
-        #   cur.execute("INSERT INTO history(pertanyaan,status,nama_penyakit,solusi) VALUES(%s,%s,%s,%s)" , (question,status,nama_penyakit,solusi))
-        #   mysql.connection.commit()
-        # sqllite 
-        #   book=  HISTORY(id=1,nama="guest",status=status,pertanyaan=question,nama_penyakit=nama_penyakit,solusi=solusi,score=scoree,waktu_proses=str(datetime.now()-begin),gmaps=gmaps,link=link)
-        #   db.session.add(book)
-        #   db.session.commit()
-        # mongodb
-        #   book=  HISTORY(id=1,nama="guest",pertanyaan=question,jawaban=candidate['text'],score=scoree,waktu_proses=str(datetime.now()-begin))
-        #   db.session.add(book)
-        #   db.session.commit()
-  
+     
+     
+
   respon_model.append(dictlogs)    
   
   print(respon_model)
