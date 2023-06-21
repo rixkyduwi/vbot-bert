@@ -59,11 +59,24 @@ def predict_class(sentence, model):
 
 def getResponse(ints, intents_json):
     tag = ints[0]['intent']
+    print(tag)
+    tag = tag.replace(' ', '_')
     list_of_intents = intents_json['intents']
+    print(list_of_intents)
+    result=""
     for i in list_of_intents:
-        if(i['tag']== tag):
+        if "greating" == tag:
+            
+            responses = i['responses'].append()
             result = random.choice(i['responses'])
             break
+        elif(i['tag']== tag):
+            result = random.choice(i['responses'])
+            break
+    print(result)
+    if result == "":
+        result = "[{'response':'maaf saya tidak tahu'}]"
+        # result = "maaf saya tidak tahu"
     return result
 
 

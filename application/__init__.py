@@ -66,11 +66,7 @@ class index(Resource):
         return Response(render_template("landingpage.html"),mimetype='text/html')
 class chat(Resource):
     def get(self):
-        respon = tips()
-        title = respon[0].title
-        sumber = respon[0].sumber
-        data = respon[0].isi
-        return Response(render_template('tips.html',titile=title,data=data,sumber=sumber),mimetype='text/html')
+        return Response(render_template('index.html'),mimetype='text/html')
 class apitips(Resource):
     def get(self):
         respon = tips()

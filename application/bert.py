@@ -74,7 +74,7 @@ def bert_prediction(question):
   "influenza adalah penyakit yang mempunyai gejala Demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala.",
   "PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba Nyeri kepala Rasa lelah Nyeri otot Batuk, dengan dahak yang disertai darah Kesulitan bernapas Mual dan muntah Demam tinggi Nyeri kepala Rasa lemah .",
   "Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput "]
-
+#tambahkan algoritma knapsack
   # dari database
   cur = mysql.connection.cursor()
   cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
@@ -82,9 +82,8 @@ def bert_prediction(question):
   for i in range(len(fromdb)):
       item = convertTuple1(fromdb[i])
       raw1.append(item)
-  #
-  context = textwrap.wrap(raw1, 520)
-  print(context)
+  # context = textwrap.wrap(raw1, 520)
+  #print(context)
   begin = datetime.now()
   for i in range(len(raw1)):
     encodedData = tokenizer(question, raw1[i], padding=True, return_offsets_mapping=True, truncation="only_second", return_tensors="pt")
@@ -92,7 +91,7 @@ def bert_prediction(question):
     encodedData.to(device)
     print(i)
     model.to(device)
-    print(context[i])
+    print(raw1[i])
     print(question)
     print(len(encodedData["input_ids"][0]))
     jmltoken = len(encodedData["input_ids"][0])
@@ -124,7 +123,7 @@ def bert_prediction(question):
           end_char = offsetMapping[end_index][1]
           candidates.append({
             "score": startLogits[start_index] + endLogits[end_index],
-            "text": context[start_char: end_char]
+            "text": raw1[start_char: end_char]
           })
     candidates = sorted(candidates, key=lambda x: x["score"], reverse=True)[:1]
 
