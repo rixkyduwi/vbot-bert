@@ -1,11 +1,12 @@
 {"intents": [
-    {"tag": "noanswer",
-    "patterns": [],
+    {
+    "tag": "noanswer",
+    "patterns": [""],
     "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
     "context": [""]
    },
     {"tag": "greeting",
-     "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+     "patterns": ["Halo", "Apa kabar?", "Ada orang di sana?","Hai","Hallo","Hey","Hola", "Hello", "Good day"],
      "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
      "context": [""]
     },
@@ -29,7 +30,8 @@
      "responses": ["Navigating to Adverse drug reaction module"],
      "context": [""]
     },
-    {"tag": "blood_pressure",
+    {
+     "tag": "blood_pressure",
      "patterns": ["Open blood pressure module", "Task related to blood pressure", "Blood pressure data entry", "I want to log blood pressure results", "Blood pressure data management" ],
      "responses": ["Navigating to Blood Pressure module"],
      "context": [""]
