@@ -16,3 +16,6 @@ Sastrawi
 SQLAlchemy
 torch
 transformers
+keras
+tensorflow
+html5lib
