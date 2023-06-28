@@ -20,3 +20,4 @@ keras
 tensorflow
 html5lib
 gunicorn
+python-dotenv
