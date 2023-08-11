@@ -3,6 +3,7 @@
 /model
 /application/__pycache__
 /venv
+/bert_model
 cb.txt
 coba.py
 pip.txt

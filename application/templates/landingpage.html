@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halo SUS</title>
+    <title>Hai SUS</title>
     <link
       rel="canonical"
       href="https://www.wrappixel.com/templates/adminpro/"
@@ -53,6 +53,54 @@
 .btn-light-success:hover>.text-center {
     color: #fff;
 }
+#text {
+    margin-top: 130px; 
+    margin-left: 200px;
+  }
+  #resize {
+    width: 450px; 
+    height: 419px;
+}
+#resize2 {
+    width: 450px; 
+    height: 419px;
+}
+@media only screen and (max-width: 1100px) {
+  #text {
+    margin-top: 100px; 
+    margin-left: 170px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  #text {
+    margin-top: 60px; 
+    margin-left: 140px;
+  }
+  #resize {
+    width: 0px; 
+    height: 0px;
+}
+#resize2 {
+    width: 0px; 
+    height: 0px;
+}
+}
+@media only screen and (max-width: 600px) {
+  #text {
+    margin-top: 0px; 
+    margin-left: 0px;
+  }
+  #resize {
+    width: 0px; 
+    height: 0px;
+}
+#resize2 {
+    width: 0px; 
+    height: 0px;
+}
+}
+
+
   </style>
 </head>
 
@@ -60,26 +108,23 @@
 <div class="page-wrapper">
     <div class="page-titles">
         <div class="row">
-          <div class="col-lg-8 col-md-6 col-12 align-self-center">
+          <div class="col-lg-8 col-md-6 col-8 align-self-center">
             <h4 class="text-muted mb-0 fw-normal">Selamat Datang di</h4>
             <h1 class="mb-0 fw-bold">Chatbot HaiSus</h1>
           </div>
           <div class="
-              col-lg-4 col-md-6
-              d-none d-md-flex
-              align-items-center
-              justify-content-end
+              col-lg-4 col-md-6 col-4
             ">
-            <a href="/input-dokter" class="btn btn-info d-flex align-items-center ms-2">
-              Login Dokter
+            <a href="/login_dokter" class="btn btn-info d-flex align-items-center ms-2 d-flex justify-content-end" style="background-color: inherit;border:inherit">
+              <button class="btn btn-primary">Login Dokter</button>
             </a>
           </div>
         </div>
       </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6" style="">
-                    <div style="margin-top: 130px; margin-left: 200px;">
+            <div class="col-lg-6 col-12" >
+                    <div id="text">
                         <h1>Fitur Fitur yang kami tawarkan:</h1> 
                         <br>
                         <ul style="text-decoration: none;">
@@ -87,13 +132,13 @@
                             <li> Tips Hidup Sehat </li>
                             <li> Saran Lokasi Apotek terdekat </li>
                         </ul>
-                        <button class="btn-light-success" onclick="location.replace('/chat')">mulai chat</button>
+                        <a href="/chat"><button class="btn-light-success" >mulai chat</button></a>
                     </div>
-                  <div class="resize-triggers"><div class="expand-trigger"><div style="width: 450px; height: 419px;"></div></div><div class="contract-trigger"></div></div></div>
+                  <div class="resize-triggers"><div class="expand-trigger"><div id="resize" ></div></div><div class="contract-trigger"></div></div></div>
                 
-              <div class="col-lg-6">
-                    <img src="../static/images/backgroundd.jpeg" alt="welcome image">
-                    <div class="resize-triggers"><div class="expand-trigger"><div style="width: 450px; height: 419px;"></div></div><div class="contract-trigger"></div></div></div>
+              <div class="col-lg-6 col-12">
+                    <img width="100%" src="../static/images/backgroundd.jpeg" alt="welcome image">
+                    <!-- <div class="resize-triggers"><div class="expand-trigger"><div id="resize2" style="width: 450px; height: 419px;"></div></div><div class="contract-trigger"></div></div></div> -->
 
               </div>
    

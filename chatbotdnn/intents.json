@@ -1,0 +1,136 @@
+{
+    "intents": [
+        {
+            "tag": "no contex",
+            "patterns": [
+                ""
+            ],
+            "responses": [
+                "Maaf Saya tidak paham, tolong tanyakan seputar aplikasi ini"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "aplikasi",
+            "patterns": [
+                "ini"
+            ],
+            "responses": [
+                "ini merupakan aplikasi chatbot, untuk memberikan informasi secara cepat."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tujuan",
+            "patterns": [
+                "tujuannya",
+                "tujuan"
+            ],
+            "responses": [
+                "Tujuan aplikasi ini adalah untuk memberikan informasi secara cepat dan dapat diakses dimana saja. "
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "chatbot",
+            "patterns": [
+                "chatbot",
+                "virtual assitant"
+            ],
+            "responses": [
+                "chatbot(virtual assistant) yaitu sistem yang memberikan pelayanan informasi secara cepat."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Selamat Pagi",
+            "patterns": [
+                "Pagi",
+                "pagi"
+            ],
+            "responses": [
+                "Selamat Pagi, ada yang bisa saya bantu?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Selamat Siang",
+            "patterns": [
+                "Siang",
+                "siang"
+            ],
+            "responses": [
+                "Selamat Siang, ada yang bisa saya bantu?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Selamat Sore",
+            "patterns": [
+                "Sore",
+                "sore"
+            ],
+            "responses": [
+                "Selamat Sore, ada yang bisa saya bantu?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Selamat Malam",
+            "patterns": [
+                "Malam",
+                "malam",
+                "Malem",
+                "malem"
+            ],
+            "responses": [
+                "Selamat Malam, ada yang bisa saya bantu?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Halo",
+            "patterns": [
+                "Halo",
+                "Hai"
+            ],
+            "responses": [
+                "Halo, ada yang bisa saya bantu?",
+                "Hai, ada yang bisa saya bantu"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "terima kasih",
+            "patterns": [
+                "terima kasih",
+                "makasih"
+            ],
+            "responses": [
+                "Sama - Sama"
+            ],
+            "context": [
+                ""
+            ]
+        }
+        
+    ]
+}

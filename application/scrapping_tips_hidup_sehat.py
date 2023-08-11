@@ -56,4 +56,5 @@ def tips():
     cur = mysql.connection.cursor()
     mysql.connection.commit()
     respon.append(dictlogs)
+    print(respon)
     return respon

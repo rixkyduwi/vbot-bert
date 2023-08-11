@@ -106,7 +106,8 @@
 
 <body >
   <!-- partial:index.partial.html -->
-  <section class="msger">
+  <a href="/" class="btn btn-back btn-info" style="position:absolute;z-index: 9999; top:30px;left:20px;">🔙 kembali</a> 
+ <section class="msger">
     <header class="msger-header">
       <div class="msger-header-title">
          Ruang Konsultasi
@@ -114,6 +115,7 @@
     </header>
 
     <main class="msger-chat" >
+      
       <div class="msg left-msg">
         <div class="msg-img" style="background-image: url(../static/images/logoo.jpeg)"></div>
 
@@ -135,7 +137,7 @@
         </div>
     </main>
 
-    <form class="msger-inputarea">
+    <form class="msger-inputarea" id="kirim">
       <input type="text" class="msger-input" id="textInput" name="pertanyaan" placeholder="Enter your message...">
       <button id="send" type="submit" class="msger-send-btn">Send</button>
     </form>
@@ -274,6 +276,15 @@ console.log(txt.length)
     setTimeout(typeWriter, speed);
   }
 }
+$('#deteksi').click(function(){
+    const msgText = "deteksi penyakit";
+    appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+    msgerInput.value = "";
+    setTimeout(() => {
+    const msgTextbot = "silahkan sebutkan gejala gejala yang anda alami";
+    appendMessage(BOT_NAME,BOT_IMG, "left", msgTextbot);
+  },500)
+  })
     function botResponse(rawText,pilihan) {
       console.log(pilihan)
       const pertanyaan = rawText.toLowerCase();
@@ -285,36 +296,51 @@ console.log(txt.length)
           setTimeout(() => {
           appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
           },500)
-          
-  
         });
       }
       else{
         $.get("/api/v1/model/predict", { pertanyaan: pertanyaan }).done(function (data) {
           console.log(rawText);
           console.log(data[0]);
-          const status = data[0].status;
+          var status = data[0].status;
           if(status === true){
-          const msgText = data[0].jawaban;
-          const msgsolusi = data[0].solusi;
-          const msgmaps = data[0].gmaps;
-          const msglink = data[0].link;
+          var msgText = data[0].jawaban;
+          var msgsolusi = data[0].solusi;
+          var msgmaps = data[0].gmaps;
+          
+          var msglink = data[0].link;
+          
           appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-          setTimeout(() => {
+          if (msgsolusi== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else{
+            setTimeout(() => {
           appendMessage(BOT_NAME, BOT_IMG, "left", msgsolusi);
           },500)
-          setTimeout(() => {
+          }
+          if (msglink== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else if (msgmaps== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else{
+            setTimeout(() => {
           appendMessageGmaps(BOT_NAME, BOT_IMG, "left", msgmaps, msglink);
           },700)
           }
+          }
           else{
-          const statusText = data[0].deskripsi;
+          var statusText = data[0].deskripsi;
           appendMessage(BOT_NAME, BOT_IMG, "left", statusText);
+          appendMessage(BOT_NAME, BOT_IMG, "left", "coba tanya <button onclick='chatgpt()'>Chatgpt<button>");
           }
   
         });
       }
     }
+    function chatgpt(){msgerInput.value='Random Question';msgerForm.submit()}
     // Utils
     function get(selector, root = document) {
       return root.querySelector(selector);
@@ -327,15 +353,7 @@ console.log(txt.length)
       return `${h.slice(-2)}:${m.slice(-2)}`;
     }
     
-  $('#deteksi').click(function(){
-    const msgText = "deteksi penyakit";
-    appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
-    msgerInput.value = "";
-    setTimeout(() => {
-    const msgTextbot = "silahkan sebutkan gejala gejala yang anda alami";
-    appendMessage(BOT_NAME,BOT_IMG, "left", msgTextbot);
-  },500)
-  })
+
 
   $('#apotek').click(function(){
     const msgText = "apotek terdekat";

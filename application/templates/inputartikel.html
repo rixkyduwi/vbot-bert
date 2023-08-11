@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0 text-white">Input URL Artikel</h4>
+                </div>
+                <form action="/api/v1/dokter/input" method="post" class="form-horizontal">
+
+                    <div>
+                        <div class="card-body">
+                            <h4 class="card-title">Masukan Atikel </h4>
+                            <div class="row pt-3">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <input type="hidden" class="form-control" name="id_dokter" value="123">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3"><label>
+                                            Judul artikel
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="masukan nama penyakit"
+                                            name="nama">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3"><label>
+                                            Url link
+                                        </label>
+                                        <input type="text" class="form-control"
+                                            placeholder="masukan cara pengobatan / penyegahannya" name="url"
+                                            id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+
+                                        <input class="form-control bg-success text-white" type="submit">
+                                    </div>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

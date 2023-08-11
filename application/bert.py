@@ -6,20 +6,19 @@ from . import mysql
 from .nlpcnn import nlp
 import openai
 import textwrap
-import urllib, json
-with urllib.request.urlopen("https://tegaltourism.com/coba.php") as url:
-    b = str(url.read())
-a="sk-lbkFJ"
-c="4Ix2gOoxGus"
-d="3ddnc2QM6T3B"
-e="4X1XTsgQdKlJ"
-key = ''.join([a,b,c,d,e])
+import urllib, json,os
+from dotenv import load_dotenv
+load_dotenv()
+key = os.environ.get("API_CHATGPT")
 #print(key)
-openai.api_key =key
+openai.api_key = key
 device = "cuda" if torch.cuda.is_available() else "cpu" 
 torch.device(device) 
 modelCheckpoint = "indolem/indobert-base-uncased"
-model = BertForQuestionAnswering.from_pretrained("model")
+
+model_directory = os.path.abspath(os.path.join(__file__, "../../bert_model/model.bin")) 
+model = torch.load(model_directory,map_location=torch.device('cpu'))
+model.to(device)
 tokenizer = BertTokenizerFast.from_pretrained(modelCheckpoint)
 start_time = time.time()
 
@@ -57,31 +56,32 @@ link_rumah_sakit = "https://www.google.com/maps/search/Rumah_sakit/"
 link_puskesmas = "https://www.google.com/maps/search/Puskesmas/"
 link_apotek = "https://www.google.com/maps/search/Apotek/"
 link_urut = "https://www.google.com/maps/search/Urut/"
-
+raw1 = ["DBD adalah penyakit menular yang disebabkan oleh virus dengue yang dibawa oleh nyamuk Aedes aegeypti Betina. Gejala yang umum terjadi adalah demam tinggi pada beberapa hari, sakit pada persendian, munculnya bintik-bintik merah, turunnya trombosit secara drastis, dan bisa terjadi pendarahan", 
+"maag matau sindrom dispepsia adalah penyakit yang mempunyai gejala Nyeri ulu hati, mual, dan muntah setelah makan",
+"Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut,",
+"Cacar air adalah penyakit yang mempunyai gejala bintik kemerahan di kulit yang menggelembung maupun tidak, melepuh, dan terasa gatal.",
+"Tifus adalah penyakit yang mempunyai gejala demam yang suhunya naik secara bertahap hingga membuat pendeita menggigil.",
+"Campak adalah penyakit yang mempunyai gejala naiknya suhu tubuh, batuk, nyeri tenggorokan, nyeri otot, hingga ruam pada kulit yang muncul sekitar 7-14 hari setelah terinfeksi virus.",
+"influenza adalah penyakit yang mempunyai gejala Demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala.",
+"PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba Nyeri kepala Rasa lelah Nyeri otot Batuk, dengan dahak yang disertai darah Kesulitan bernapas Mual dan muntah Demam tinggi Nyeri kepala Rasa lemah .",
+"Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput "]
+# dari database
+cur = mysql.connection.cursor()
+cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
+fromdb= cur.fetchall()
 def convertTuple1(tup):
     return ''.join([str(x) for x in tup])
+
+for i in range(len(fromdb)):
+    item = convertTuple1(fromdb[i])
+    raw1.append(item)
+
+  # cara 2 menggunakan array 
 
 def bert_prediction(question):
   respon_model = []
   dictlogs = {}
 
-  # cara 2 menggunakan array 
-  raw1 = [ "maag matau sindrom dispepsia adalah penyakit yang mempunyai gejala Nyeri ulu hati, mual, dan muntah setelah makan",
-  "Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut,",
-  "Cacar air adalah penyakit yang mempunyai gejala bintik kemerahan di kulit yang menggelembung maupun tidak, melepuh, dan terasa gatal.",
-  "Tifus adalah penyakit yang mempunyai gejala demam yang suhunya naik secara bertahap hingga membuat pendeita menggigil.",
-  "Campak adalah penyakit yang mempunyai gejala naiknya suhu tubuh, batuk, nyeri tenggorokan, nyeri otot, hingga ruam pada kulit yang muncul sekitar 7-14 hari setelah terinfeksi virus.",
-  "influenza adalah penyakit yang mempunyai gejala Demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala.",
-  "PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba Nyeri kepala Rasa lelah Nyeri otot Batuk, dengan dahak yang disertai darah Kesulitan bernapas Mual dan muntah Demam tinggi Nyeri kepala Rasa lemah .",
-  "Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput "]
-#tambahkan algoritma knapsack
-  # dari database
-  cur = mysql.connection.cursor()
-  cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
-  fromdb= cur.fetchall()
-  for i in range(len(fromdb)):
-      item = convertTuple1(fromdb[i])
-      raw1.append(item)
   # context = textwrap.wrap(raw1, 520)
   #print(context)
   begin = datetime.now()
@@ -96,7 +96,7 @@ def bert_prediction(question):
     print(len(encodedData["input_ids"][0]))
     jmltoken = len(encodedData["input_ids"][0])
     if jmltoken > 512:
-      dictlogs.update({"status": False,"deskripsi":"maaf terjadi error di sistem kami tunggu 2x24 jam untuk mencoba kembali"})
+      dictlogs.update({"status": False,"deskripsi":"maaf terjadi error di sistem kami tunggu beberapa saat untuk mencoba kembali"})
       break
     model.eval() 
     with torch.no_grad(): # IMPORTANT! Do not computing gradient!

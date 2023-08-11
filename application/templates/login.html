@@ -37,6 +37,8 @@
   </head>
 
   <body>
+    <a href="/" class="btn btn-back btn-info" style="position:absolute;z-index: 9999; top:30px;left:20px;">🔙 kembali </a>
+   
     <div class="main-wrapper">
       <!-- Login box.scss -->
       <!-- ============================================================= -->
@@ -79,7 +81,7 @@
                   <form
                     class="form-horizontal mt-4 pt-4 needs-validation"
                     novalidate
-                    action="index.html"
+                    action="/api/v1/dokter/register" method="post"
                   >
                     <div class="form-floating mb-3">
                       <input
@@ -87,6 +89,7 @@
                         class="form-control form-input-bg"
                         id="tb-rfname"
                         placeholder="john deo"
+                        name="name"
                         required
                       />
                       <label for="tb-rfname">Full Name</label>
@@ -97,6 +100,7 @@
                         type="email"
                         class="form-control form-input-bg"
                         id="tb-remail"
+                        name="email"
                         placeholder="john@gmail.com"
                         required
                       />
@@ -110,6 +114,7 @@
                         id="text-rpassword"
                         placeholder="*****"
                         required
+                        name="password"
                       />
                       <label for="text-rpassword">Password</label>
                       <div class="invalid-feedback">Password is required</div>
@@ -131,7 +136,6 @@
                         type="checkbox"
                         value=""
                         id="r-me"
-                        required
                       />
                       <label class="form-check-label" for="r-me">
                         Remember me
@@ -167,10 +171,12 @@
                       >Create an account</a
                     >
                   </p>
+                  {% include 'alert.html' %}
                   <form
                     class="form-horizontal mt-4 pt-4 needs-validation"
                     novalidate
-                    action="index.html"
+                    action="/api/v1/dokter/login"
+                    method="post"
                   >
                     <div class="form-floating mb-3">
                       <input
@@ -179,6 +185,7 @@
                         id="tb-email"
                         placeholder="blbla"
                         required
+                        name="username"
                       />
                       <label for="tb-email">Username</label>
                       <div class="invalid-feedback">Username is required</div>
@@ -191,6 +198,7 @@
                         id="text-password"
                         placeholder="*****"
                         required
+                        name="password"
                       />
                       <label for="text-password">Password</label>
                       <div class="invalid-feedback">Password is required</div>
@@ -203,7 +211,6 @@
                           type="checkbox"
                           value=""
                           id="r-me1"
-                          required
                         />
                         <label class="form-check-label" for="r-me1">
                           Remember me
@@ -242,7 +249,7 @@
                   </div>
                   <div class="mt-4 pt-4">
                     <!-- Form -->
-                    <form action="index.html">
+                    <form action="/send-reset">
                       <!-- email -->
                       <div class="mb-4 pb-2">
                         <div class="form-floating">
@@ -250,6 +257,7 @@
                             class="form-control form-input-bg"
                             type="email"
                             required=""
+                            name="email"
                             placeholder="Email address"
                           />
                           <label for="tb-email">Email</label>
