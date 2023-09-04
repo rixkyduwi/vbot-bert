@@ -6,6 +6,7 @@ from keras.layers import Dense, Dropout
 from keras.models import load_model
 from keras.models import Sequential
 import numpy as np
+import pandas as pd
 import pickle
 import json
 import nltk
@@ -22,6 +23,9 @@ documents = []
 ignore_words = ["?", "!"]
 data_file = open("intents.json").read()
 intents = json.loads(data_file)
+data_file = open("intents.csv").read()
+df = pd.read_csv(r'./intents.csv')
+print(df)
 
 for intent in intents["intents"]:
   #membaca pola

@@ -36,6 +36,7 @@ from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from flask_apispec.extension import FlaskApiSpec
 
+import pandas as pd
 app.config.update({
     'APISPEC_SPEC': APISpec(
         title='Haisus Open Api',
@@ -112,121 +113,185 @@ def required_login(func):
         return func(*args, **kwargs)
     return decorated_function
 
+# dataset
+rules = {("sakit","demam tinggi pada beberapa hari", "sakit pada persendian", "munculnya bintik-bintik merah", "turunnya trombosit secara drastis", "pendarahan"):"DBD",
+    ("sakit","nyeri","ulu","hati", "nyeri ulu hati","mual", "muntah", "muntah setelah makan"):"maag atau sindrom dispepsia",
+    ("sakit","diare","buang air besar lebih sering dari biasanya", "feses yang lebih encer dari biasanya", "mual", "muntah berulang kali","nyeri perut"):"Muntaber",
+    ("sakit","bintik kemerahan di kulit","bintik", "bintik kemerahan","bintik merah","bintik kemerahan di kulit yang menggelembung","kulit yang menggelembung","bintik kemerahan di kulit tidak menggelembung" ,"bintik kemerahan di kulit yang melepuh" ,"bintik kemerahan di kulit yang terasa gatal"):"Cacar air",
+    ("sakit","demam","suhu tubuh naik secara bertahap","menggigil"):"Tifus",
+    ("sakit","naiknya suhu tubuh", "batuk", "nyeri tenggorokan", "nyeri otot", "hingga ruam pada kulit"):"Campak",
+    ("sakit","demam", "batuk", "nyeri tenggorokan", "hidung berair", "hidung tersumbat", "sakit kepala","kepala", "mudah lelah","masuk angin","masuk","angin"):"influenza",
+    ("sakit","demam","menggigil","nyeri kepala" ,"Rasa lelah" ,"nyeri otot" ",Batuk berdahak", "Kesulitan bernapas" ,"mual","muntah", "demam tinggi", "nyeri kepala" ,"rasa lemah"):"PES / Pesteurellosis",
+    ("sakit","diare ringan","diare berat", "diare encer secara tiba-tiba", "tanpa rasa sakit","tanpa muntah-muntah", "dehidrasi" ,"rasa haus yang hebat", "kram otot", "penurunan produksi air kemih", "badan terasa sangat lemah", "mata menjadi cekung","kulit jari-jari tangan mengeriput"):"Kolera",
+    ("demam tinggi", "38","derajat","celcius","dada terasa sakit dan sulit bernapas","penurunan nafsu makan","berkeringat","menggigil","detak jantung terasa cepat"):"pneumonia",
+    ("apa itu dbd","dbd","demam berdarah",""):"DBD adalah penyakit menular yang disebabkan oleh virus dengue yang dibawa oleh nyamuk Aedes aegeypti Betina. Gejala yang umum terjadi adalah demam tinggi pada beberapa hari, sakit pada persendian, munculnya bintik-bintik merah, turunnya trombosit secara drastis, dan bisa terjadi pendarahan",
+    ("maag atau sindrom dispepsia","maag","sindrom dispepsia","dispepsia"):"maag matau sindrom dispepsia adalah penyakit yang mempunyai gejala nyeri ulu hati, mual, dan muntah setelah makan cara mengatasinya : Makan secara perlahan, dalam porsi yang kecil Batasi konsumsi makanan pedas dan berlemak, Kurangi minuman berkafein, Hindari obat-obatan yang menyebabkan nyeri lambung, Anda juga bisa mengkonsumsi obat penetraalisir maag seperti Promag, mylanta, polysilane dst. Promag dijual secara bebas dan tersedia dalam bentuk tablet kunyah serta suspensi cair",
+    ("muntaber",):"Muntaber adalah penyakit yang mempunyai gejala diare (buang air besar lebih sering dari biasanya dan ditandai dengan kondisi feses yang lebih encer dari biasanya), mual, muntah berulang kali, dan nyeri perut,Cara mengatasi : muntaber yang dapat dilakukan dengan mudah adalah terapi rehidrasi dengan cara mengonsumsi banyak cairan terutama air putih. Sementara untuk balita dan anak-anak, pemakaian oralit mungkin bisa langsung diberikan untuk menggantikan cairan yang hilang. Kenapa harus oralit? Karena air biasa tidak memiliki kandungan garam dan nutrisi yang cukup untuk menggantikan cairan yang hilang.Jika diperlukan, dokter biasanya akan meresepkan antibiotika jenis metronidazol yang dikombinasikan dengan sulfametoksazol dan trimetoprim. Obat diare lainnya yang bisa digunakan adalah probiotik. Probiotik bisa digunakan untuk mengobati diare dengan cara melawan bakteri jahat penyebab diare",
+    ("cacar air","cacar"):"Cacar air adalah penyakit yang mempunyai gejala bintik kemerahan di kulit yang menggelembung maupun tidak, melepuh, dan terasa gatal.Melakukan vaksinasi cacar air, Menjaga kebersihan diri sendiri, pakaian, dan lingkungan, Mengkonsumsi makanan bergizi, Menghindari sumber penularan cacar air.",
+    ("tifus","tipes"):"Tifus adalah penyakit yang mempunyai gejala demam yang suhunya naik secara bertahap hingga membuat pendeita menggigil. cara mengatasinya : Memastikan kebersihan bahan makanan sebelum memasaknya, Mencuci tangan secara teratur, terutama sebelum dan setelah makanan, Membersihkan luka dan segera mengobatinya, Hindari jajan di pinggir jalan yang terlihat tidak higienis, Menjaga daya tahan tubuh, Memakan yang tinggi protein, rendah serat, lunak, tidak asam,  dan pedas",
+    ("campak",):"Campak adalah penyakit yang mempunyai gejala naiknya suhu tubuh, batuk, nyeri tenggorokan, nyeri otot, hingga ruam pada kulit yang muncul sekitar 7-14 hari setelah terinfeksi virus. Cara Mengatasinya: Melakukan vaksinasi ketika masih usia balita.",
+    ("influenza","flu"):"influenza adalah penyakit yang mempunyai gejala demam, batuk, nyeri tenggorokan, hidung berair, hidung tersumbat, sakit kepala, mudah lelah. ",
+    ("pneumonia","radang paru-paru","radang paru paru","paru paru radang","paru-paru radang"):"Pneumonia atau radang paru-paru adalah penyakit yang mempunyai gejala.cara mengatasinya : Menjaga daya tahan tubuh agar tidak mudah terserang virus. Misalnya dengan makan teratur, istirahat yang cukup, minum air putih sesuai kebutuhan, berolah raga, dan memiliki gaya hidup yang sehat.Selain itu, menjaga daya tahan tubuh juga dapat juga didukung dengan asupan vitamin terutama Vitamin C yang bisa didapatkan di buah-buahan maupun vitamin yang dijual di toko-toko.Pencegahan lainnya adalah dengan menggunakan masker ditempat umum, terutama bagi yang menderita influenza",
+    ("PES / Pesteurellosis","pes","pestaurellosis"):"PES atau yang juga dikenal dengan Pesteurellosis adalah penyakit yang mempunyai gejala demam dan menggigil yang tiba-tiba nyeri kepala Rasa lelah nyeri otot batuk, dengan dahak yang disertai darah kesulitan bernapas Mual dan muntah demam tinggi nyeri kepala rasa lemah . cara mengatasinya : Penanganan terhadap penyakit pes membutuhkan perawatan inap di rumah sakit. Dokter akan meresepkan antibiotik untuk membunuh bakteri, serta obat-obatan lain sesuai dengan tanda dan gejala yang dialami oleh penderita tersebut",
+    ("kolera",):"Kolera adalah penyakit yang mempunyai gejala bervariasi, mulai dari diare ringan sampai diare berat yang bisa berakibat fatal. Dalam beberapa kasus, orang yang terinfeksi justru tidak menunjukkan gejala apa pun, diare encer seperti air yang terjadi secara tiba-tiba, tanpa rasa sakit dan muntah-muntah, dehidrasi disertai rasa haus yang hebat, kram otot, penurunan produksi air kemih, sehingga badan terasa sangat lemah, mata menjadi cekung dan kulit jari-jari tangan mengeriput cara mengatasinya : memperbanyak asupan cairan untuk mencegah dehidrasi akibat kolera Bila dehidrasi sudah diatasi, tujuan pengobatan selanjutnya adalah untuk menggantikan jumlah cairan yang hilang karena diare dan muntah. Pengobatan awal dengan tetrasiklin atau antibiotik lainnya bisa membunuh bakteri dan biasanya akan menghentikan diare dalam 48 jam.Bila berada di daerah resisten dengan wabah kolera atau Vibrio cholerae, dapat digunakan furozolidone. Makanan padat bisa diberikan setelah muntah-muntah berhenti dan nafsu makan sudah kembali.Pencegahan: Untuk mencegah kolera, penting untuk melakukan penjernihan cadangan air dan pembuangan tinja yang memenuhi standar. Selain itu, minumlah air yang sudah terlebih dahulu dimasak. Hindari mengonsumsi sayuran mentah atau ikan dan kerang yang tidak dimasak sampai matang.Pemberian antibiotik tetrasiklin juga bisa membantu mencegah penyakit pada orang-orang yang sama-sama menggunakan perabotan rumah dengan penderita kolera. Sementara itu, vaksinasi kolera tidak terlalu dianjurkan karena perlindungan yang diberikan tidak menyeluruh"
+}
+
+raw1 = ["DBD (Demam Berdarah Dengue): Penyakit menular disebabkan oleh virus dengue yang dibawa oleh nyamuk Aedes aegeypti Betina. Gejalanya meliputi demam tinggi, sakit persendian, bintik-bintik merah, penurunan trombosit, dan mungkin pendarahan.",
+"Maag atau Sindrom Dispepsia: Penyakit dengan gejala nyeri ulu hati, mual, dan muntah setelah makan. Pengobatannya meliputi makan perlahan, menghindari makanan pedas dan berlemak, serta penggunaan obat maag seperti Promag.",
+"Muntaber (Diare): Penyakit dengan gejala diare, mual, muntah, dan nyeri perut. Pengobatannya termasuk rehidrasi dengan mengonsumsi banyak cairan dan, jika diperlukan, antibiotik.",
+"Cacar Air: Penyakit dengan gejala bintik-bintik kemerahan di kulit yang menggelembung, melepuh, dan gatal. Pencegahannya meliputi vaksinasi dan menjaga kebersihan diri dan lingkungan.",
+"Tifus: Penyakit dengan gejala demam, menggigil, dan penurunan trombosit. Cara mengatasi meliputi menjaga kebersihan makanan, mencuci tangan, dan menjaga daya tahan tubuh.",
+"Campak: Penyakit dengan gejala demam, batuk, nyeri tenggorokan, dan ruam kulit. Pengobatan melibatkan vaksinasi.",
+"Influenza: Penyakit dengan gejala demam, batuk, nyeri tenggorokan, hidung berair, dan lainnya. Umumnya diobati dengan istirahat dan cairan.",
+"Pneumonia (Radang Paru-Paru): Penyakit dengan gejala seperti demam, batuk, dan sulit bernapas. Pengobatannya melibatkan antibiotik dan menjaga daya tahan tubuh.",
+"PES (Pesteurellosis): Penyakit dengan gejala demam, nyeri kepala, lelah, dan lainnya. Penanganannya melibatkan antibiotik.",
+"Kolera: Penyakit dengan gejala diare berat, dehidrasi, dan lainnya. Pengobatan melibatkan pemberian cairan dan antibiotik, sementara pencegahannya termasuk penjernihan air dan pengolahan tinja.",
+"Rumah Sakit terdekat => https://www.google.com/maps/search/Rumah_sakit/ ",
+"Puskesmas terdekat => https://www.google.com/maps/search/Puskesmas/ ",
+"Apotek terdekat => https://www.google.com/maps/search/Apotek/ ",
+"Tempat pijat / urut disekitar anda => https://www.google.com/maps/search/Urut/ "]
+
+list_penyakit = ["DBD (Demam Berdarah Dengue)","Maag","Muntaber (Diare)","Cacar Air",
+"Tifus","Campak","Influenza","Pneumonia (Radang Paru-Paru)","PES (Pesteurellosis)","Kolera"]
 #contorller
-class index(MethodResource,Resource):
 
+#routes
 
-    def get(self):
+#add to api doc
+@app.route("/")
+def index():
         '''
         Get method represents a landing page for haisus.site
         '''
         #print(generate_password_hash('blabla12'))
-        now = datetime.datetime.now()
-        first_day = datetime.datetime(now.year,now.month,27)
-        formatted_first_day = first_day.strftime("%Y-%m-%d")
-        today = datetime.datetime(now.year,now.month,now.day)
-        formatted_today = today.strftime("%Y-%m-%d")
-        print(str(formatted_today))
-        if formatted_today == formatted_first_day :
-            from .train_nlp_cnn import retraining
-            print("retraining")
-            retraining()
-        else:
-            None
+       
         return Response(render_template("landingpage.html"),mimetype='text/html')
-class chat(MethodResource,Resource):
-
-
-    def get(self):
+@app.route('/chat', methods=['GET'])
+def chat():
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
+        fromdb= cur.fetchall()
+        for x in fromdb:
+            # raw1.append(x)
+            list_penyakit.append(x[0])
+            list_string = x[2].split(",")
+            filter_String = []
+            for string in list_string:
+                new_string = string.strip() 
+                new_string = string.lower() 
+                filter_String.append(new_string)
+            rules[tuple(filter_String)]=str(x[0])
+        
         return Response(render_template('index.html'),mimetype='text/html')
-class apipredict(MethodResource,Resource):
-
-
-    def get(self):
+@app.route('/chat_pilih_context', methods=['GET'])
+def chat2():
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
+        fromdb= cur.fetchall()
+        for x in fromdb:
+            raw1.append(x)
+            list_penyakit.append(x[0])
+            list_string = x[2].split(",")
+            filter_String = []
+            for string in list_string:
+                new_string = string.strip() 
+                new_string = string.lower() 
+                filter_String.append(new_string)
+            rules[tuple(filter_String)]=str(x[0])
+        print(list_penyakit)
+        return Response(render_template('chatbot_pilih_context.html',raw1=raw1,len= len(list_penyakit),list_penyakit=list_penyakit),mimetype='text/html')
+@app.route('/api/v1/model/predict', methods=['GET'])
+def apipredict():
         question = request.args.get('pertanyaan')
         print(question)
-        prediction = bert_prediction(str(question))
+        cur = mysql.connection.cursor()
+        # cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
+        # fromdb= cur.fetchall()
+        # for x in fromdb:
+        #     raw1.append(x[0]+x[1]+x[2])
+        prediction = bert_prediction(raw1,str(question.lower()))
         print(prediction)
         return prediction
-class apitips(MethodResource,Resource):
 
-
-    def get(self):
+@app.route('/api/v2/model/predict', methods=['GET'])
+def apipredict2():
+        question = request.args.get('pertanyaan')
+        id = request.args.get('id_context')
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT nama_penyakit,' adalah penyakit yang mempunyai gejala ', gejala from input_dokter")
+        fromdb= cur.fetchall()
+        for x in fromdb:
+            raw1.append(x)
+        print(id)
+        context = raw1[int(id)]
+        print(question)
+        prediction = bert_prediction_pilih_context(context,str(question.lower()))
+        print(prediction)
+        return prediction
+@app.route('/tips', methods=['GET'])
+def apitips():
         respon = tips()
         title = respon[0]['title']
         sumber = respon[0]['sumber']
         data = respon[0]['isi']
         return Response(render_template('tips.html',title=title,data=data,sumber=sumber),mimetype='text/html')
-
-class input_dokter(MethodResource,Resource):
-    @required_login
-
-
-    def get(self):
+@app.route('/input_dokter', methods=['GET'])
+@required_login
+def input_dokter():
         return Response(render_template("inputdokter.html"),mimetype='text/html')
-class apiinputdokter(MethodResource,Resource):
-    @required_login
-
-
-    def post(self):
+@app.route('/api/v1/dokter/input', methods=['POST'])
+@required_login
+def apiinputdokter():
         cur = mysql.connection.cursor()
         response = {}
-        id_dokter = request.form['id_dokter']
+        id_dokter = request.json['id_dokter']
         print(id_dokter)
-        nama_penyakit = request.form['nama_penyakit']
+        nama_penyakit = request.json['nama_penyakit']
         print(nama_penyakit)
-        gejala = request.form['gejala']
+        gejala = request.json['gejala']
         print(gejala)
-        pencegahan = request.form['pencegahan']
+        pencegahan = request.json['pencegahan']
         print(pencegahan)
-        rujukan = request.form['rujukan']
+        rujukan = request.json['rujukan']
         print(rujukan)
-        cur.execute("INSERT INTO input_dokter(id_dokter,nama_penyakit,gejala,pencegahan,rekomendasi_rujukan) VALUES(%s,%s,%s,%s,%s)" , (id_dokter,nama_penyakit,gejala,pencegahan,rujukan))
+        cur.execute("INSERT INTO input_dokter(id_dokter,nama_penyakit,gejala,pencegahan,rekomendasi_rujukan) VALUES(%s,%s,%s,%s,%s)" , (id_dokter,nama_penyakit.lower(),gejala.lower(),pencegahan,rujukan))
         mysql.connection.commit()
         response.update({"status": "sukses","msg":"Data Berhasil Diinputkan"})
-        return redirect(url_for('input_dokter'))
-class input_url(MethodResource,Resource):
-
-
-    def get(self):
+        return response
+@app.route('/input_artikel', methods=['GET'])
+def input_url():
         return Response(render_template("inputartikel.html"),mimetype='text/html')
-class apiinputurl(MethodResource,Resource):
-    @required_login
-
-
-    def post(self):
+@app.route('/input_artikel', methods=['POST'])
+@required_login
+def apiinputurl():
         cur = mysql.connection.cursor()
         response = {}
-        id_dokter = request.form['id_dokter']
+        id_dokter = request.json['id_dokter']
         print(id_dokter)
-        url = request.form['url']
+        url = request.json['url']
         print(url)
-        cur.execute("INSERT INTO input_url(id_dokter,url) VALUES(%s,%s)" , (id_dokter,url))
+        nama = request.json['nama']
+        print(nama)
+        cur.execute("INSERT INTO artikel(url,nama) VALUES(%s,%s)" , (url,nama))
         mysql.connection.commit()
         response.update({"status": "sukses","msg":"Data Berhasil Diinputkan"})
-        return redirect(url_for('index'))
-class apichatgpt(MethodResource,Resource):
-
-
-    def get(self):
+        return response
+@app.route('/api/v1/chatgpt/predict', methods=['GET'])
+def apichatgpt():
         question = request.args.get('pertanyaan')
         print(question)
         response = random_question(question)
         print(response)
         return response
-
-class login_dokter(MethodResource,Resource):
-
-
-    def get(self):
+        
+@app.route('/login_dokter', methods=['GET'])
+def login_dokter():
         if 'loggedin' in session:
             return redirect(url_for('input_dokter'))
         else: 
             return Response(render_template("login.html"),mimetype='text/html')
-class apilogindokter(MethodResource,Resource):
-
-
-    def post(self):
+@app.route('/api/v1/dokter/login', methods=['POST'])
+def apilogindokter():
         a=time.localtime()
         tanggal=""+str(time.gmtime().tm_year)+"-"+str(a.tm_mon)+"-"+str(a.tm_mday)+""
         cur = mysql.connection.cursor()
@@ -238,9 +303,11 @@ class apilogindokter(MethodResource,Resource):
         if datalogin == None:
             print("laka")
             cur.close()
+            flash('maaf username tidak ada')
             return redirect(url_for('login_dokter',alert="maaf username tidak ada"))
         elif not check_password_hash(datalogin[3],password):
             cur.close()
+            flash("maaf password salah")
             return redirect(url_for('login_dokter',alert="maaf password salah"))
         else:
             session['loggedin'] = True
@@ -250,11 +317,8 @@ class apilogindokter(MethodResource,Resource):
             session['time'] = tanggal
             cur.close()
         return redirect(url_for('input_dokter'))
-
-class apiregisterdokter(MethodResource,Resource):
-
-
-    def post(self):
+@app.route('/api/v1/dokter/register', methods=['POST'])
+def apiregisterdokter():
         save = store()
         if save == True:
             return redirect(url_for('verifikasi',email=request.form['email']))
@@ -262,30 +326,14 @@ class apiregisterdokter(MethodResource,Resource):
             return redirect(url_for('login_dokter',msg="email sudah ada"))
 
 #print(generate_password_hash('blabla12'))
-class apilogoutdokter(MethodResource,Resource):
-
-    def get(self):
+@app.route('/api/v1/dokter/logout', methods=['GET'])
+def apilogoutdokter():
         session.pop('loggedin', None)
         session.pop('id', None)
         session.pop('role', None)
         session.pop('username', None)
         session.pop('time', None)
         return redirect(url_for('login_dokter'))
-
-
-#herbalia
-# @app.route('/herbalia_scan', methods=['POST'])
-# def scann():
-#     from application.herbalia_scan import scan
-#     response = scan()
-#     return response
-# @app.route('/herbalia_chatbot', methods=['POST'])
-# def chatbott():
-#     from application.herbalia_chatbot import bert_predictionn
-#     response = bert_predictionn()
-#     return response
-
-#verifikasi email
 @app.route('/redi')
 def redi():
     email = "emil@mal.co"
@@ -402,159 +450,7 @@ def insert_data():
                 json.dump(intents,k)
         flash('berhasil tambah data"')
         return redirect(url_for('tambahqna',msg="berhasil tambah data")) 
-import numpy as np
-import os
-import pickle
-import random
-import pickle
-import json
-import nltk
-from keras.models import load_model
-from nltk.stem import WordNetLemmatizer
-lemmatizer = WordNetLemmatizer()
-import re
-model = load_model("chatbotdnn/chatbot_model.h5")
-intents = json.loads(open("chatbotdnn/intents.json").read())
-words = pickle.load(open("chatbotdnn/words.pkl", "rb"))
-classes = pickle.load(open("chatbotdnn/classes.pkl", "rb"))
-@app.route('/dnn/tambahChatbot', methods = ['POST'])
-def tambahdataChatbot():
-    cur = mysql.connection.cursor()
-
-    name_patterns = request.form['Patterns']
-    
-    name_patterns = name_patterns.split(",")
-    print(name_patterns)
-    desk_responses = request.form['Responses']
-    desk_responses = desk_responses.split(",")
-    print(desk_responses)
-    cur.execute("insert into chatbot (patterns,responses) values(%s,%s)",(str(name_patterns),str(desk_responses)))
-    mysql.connection.commit()
-    cur.close()
-    chatbot_directory = os.path.abspath(os.path.join(__file__, "../../chatbotdoni/intents.json")) 
-    with open(chatbot_directory, "r+") as f:
-        inten = json.loads(f.read())
-        import uuid,string
-        letters = string.ascii_lowercase
-        rando = ''.join(random.choice(letters) for i in range(4))
-        y = {"tag":str(rando),
-            "patterns": name_patterns,
-            "responses": desk_responses,
-            "context": [""]
-            }
-        inten['intents'].append(y)
-        
-        with open(chatbot_directory, "w+") as k:
-            json.dump(inten,k)
-        
-    from retraining import retraining
-    retraining()
-
-    return "done"
-
-@app.route("/dnn/get", methods=["POST"])
-def chatbot_response():
-    msg = request.form["msg"]
-    print(msg)
-    if msg.startswith('my name is'):
-        name = msg[11:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents)
-        res =res1.replace("{n}",name)
-    elif msg.startswith('hi my name is'):
-        name = msg[14:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents)
-        res =res1.replace("{n}",name)
-    else:
-        print("jln")
-        ints = predict_class(msg, model)
-        print(ints)
-        res = getResponse(ints, intents)
-    return res
-
-def clean_up_sentence(sentence):
-    import nltk
-    nltk.download('popular')
-    from nltk.stem import WordNetLemmatizer
-    lemmatizer = WordNetLemmatizer()
-    # tokenize the pattern - split words into array
-    sentence_words = nltk.word_tokenize(sentence)
-    # stem each word - create short form for word
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
-    print(sentence_words)
-    return sentence_words
-
-def bow(sentence, words, show_details=True):
-    sentence_words = clean_up_sentence(sentence)
-    bag = [0] * len(words)
-    print(bag)
-    for s in sentence_words:
-        for i, w in enumerate(words):
-            if w == s:
-                bag[i] = 1
-                if show_details:
-                    print("found in bag: %s" % w)
-    return np.array(bag)
-
-def predict_class(sentence, model):
-    p = bow(sentence, words, show_details=False)
-    print(p)
-    res = model.predict(np.array([p]))[0]
-    print(res)
-    ERROR_THRESHOLD = 0.25
-    results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
-    results.sort(key=lambda x: x[1], reverse=True)
-    return_list = []
-    if res == []:
-        return_list.append({"intent": "error", "probability": 0})
-    else:
-        for r in results:
-            return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
-    print(return_list)
-    return return_list
-
-def getResponse(ints, intents_json):
-    tag = ints[0]["intent"]
-    list_of_intents = intents_json["intents"]
-    for i in list_of_intents:
-        print(tag)
-        print(i['tag'])
-        if i["tag"] == tag:
-            result = random.choice(i["responses"])
-            break
-        else:
-            result = "Maaf saya tidak bisa menjawab"
-    return result
-#routes
-api.add_resource(index, '/', methods=['GET'])
-api.add_resource(chat, '/chat', methods=['GET'])
-api.add_resource(apitips, '/tips', methods=['GET'])
-api.add_resource(login_dokter, '/login_dokter', methods=['GET'])
-api.add_resource(input_dokter, '/input_dokter', methods=['GET'])
-api.add_resource(input_url, '/input_artikel', methods=['GET'])
-api.add_resource(apipredict, '/api/v1/model/predict', methods=['GET'])
-api.add_resource(apiinputdokter, '/api/v1/dokter/input', methods=['POST'])
-api.add_resource(apichatgpt, '/api/v1/chatgpt/predict', methods=['GET'])
-api.add_resource(apilogindokter, '/api/v1/dokter/login', methods=['POST'])
-api.add_resource(apilogoutdokter, '/api/v1/dokter/logout', methods=['GET'])
-api.add_resource(apiregisterdokter, '/api/v1/dokter/register', methods=['POST'])
-#add to api doc
-docs.register(index)
-docs.register(chat)
-docs.register(apitips)
-docs.register(login_dokter)
-docs.register(input_dokter)
-docs.register(input_url)
-docs.register(apipredict)
-docs.register(apiinputdokter)
-docs.register(apichatgpt)
-docs.register(apilogindokter)
-docs.register(apilogoutdokter)
-docs.register(apiregisterdokter)
 CORS(app)
-
-
-
-from .bert import bert_prediction,random_question
+from .bert import bert_prediction,random_question, bert_prediction_pilih_context
+from .rule_based import rules_prediction
 from .scrapping_tips_hidup_sehat import tips

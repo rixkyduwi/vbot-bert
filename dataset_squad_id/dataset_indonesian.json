@@ -1,0 +1,386 @@
+{
+    "Daftar_Chapter": [
+      {
+        "Chapter": "I",
+        "Blocks": "A00-B99",
+        "Title": "Beberapa Penyakit Infeksi dan Parasit",
+        "Categories": [
+          { "Code": "A00-A09", "Title": "Penyakit Infeksi Usus" },
+          { "Code": "A15-A19", "Title": "Tuberkulosis" },
+          { "Code": "A20-A28", "Title": "Beberapa Penyakit Bakteri Zoonotik" },
+          { "Code": "A30-A49", "Title": "Penyakit Bakteri Lainnya" },
+          { "Code": "A50-A64", "Title": "Infeksi dengan Penyebaran Terutama Seksual" },
+          { "Code": "A65-A69", "Title": "Penyakit Spiroketal Lainnya" },
+          { "Code": "A70-A74", "Title": "Penyakit Lain yang Disebabkan oleh Chlamydia" },
+          { "Code": "A75-A79", "Title": "Penyakit Rickettsial" },
+          { "Code": "A80-A89", "Title": "Infeksi Virus pada Sistem Saraf Pusat" },
+          { "Code": "A90-A99", "Title": "Demam Virus yang Ditularkan oleh Arthropoda dan Demam Hemoragik Virus" },
+          { "Code": "B00-B09", "Title": "Infeksi Virus yang Ditandai dengan Lesi Kulit dan Membran Mukosa" },
+          { "Code": "B15-B19", "Title": "Hepatitis Virus" },
+          { "Code": "B20-B24", "Title": "Penyakit Virus Imunodefisiensi Manusia [HIV]" },
+          { "Code": "B25-B34", "Title": "Penyakit Virus Lainnya" },
+          { "Code": "B35-B49", "Title": "Mikosis" },
+          { "Code": "B50-B64", "Title": "Penyakit Protozoa" },
+          { "Code": "B65-B83", "Title": "Helminthiases" },
+          { "Code": "B85-B89", "Title": "Pediculosis, Akariasis, dan Infestasi Lainnya" },
+          { "Code": "B90-B94", "Title": "Sekuel Penyakit Infeksi dan Parasit" },
+          { "Code": "B95-B98", "Title": "Agen Bakteri, Virus, dan Infeksi Lainnya" },
+          { "Code": "B99", "Title": "Penyakit Infeksi Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "II",
+        "Blocks": "C00-D48",
+        "Title": "Neoplasma",
+        "Categories": [
+          { "Code": "C00-C75", "Title": "Neoplasma Maligna, Dinyatakan atau Dugaan Primer, dari Situs Tertentu, kecuali dari Jaringan Limfoid, Hematopoietik, dan yang Berhubungan" },
+          { "Code": "C00-C14", "Title": "Bibir, Rongga Mulut, dan Faring" },
+          { "Code": "C15-C26", "Title": "Organ Pencernaan" },
+          { "Code": "C30-C39", "Title": "Organ Pernapasan dan Intratoraks" },
+          { "Code": "C40-C41", "Title": "Tulang dan Kartilago Sendi" },
+          { "Code": "C43-C44", "Title": "Kulit" },
+          { "Code": "C45-C49", "Title": "Mesotel dan Jaringan Lunak" },
+          { "Code": "C50", "Title": "Kanker Payudara" },
+          { "Code": "C51-C58", "Title": "Organ Genital Wanita" },
+          { "Code": "C60-C63", "Title": "Organ Genital Pria" },
+          { "Code": "C64-C68", "Title": "Saluran Kemih" },
+          { "Code": "C69-C72", "Title": "Mata, Otak, dan Bagian-bagian Lain dari Sistem Saraf Pusat" },
+          { "Code": "C73-C75", "Title": "Kelenjar Tiroid dan Kelenjar Endokrin Lainnya" },
+          { "Code": "C76-C80", "Title": "Neoplasma Maligna dengan Situs Kurang Didefinisikan, Sekunder, dan Tidak Diketahui" },
+          { "Code": "C81-C96", "Title": "Neoplasma Maligna, Dinyatakan atau Dugaan Primer, dari Jaringan Limfoid, Hematopoietik, dan yang Berhubungan" },
+          { "Code": "C97", "Title": "Neoplasma Maligna dari Situs Ganda (Primer) yang Independen" },
+          { "Code": "D00-D09", "Title": "Neoplasma In Situ" },
+          { "Code": "D10-D36", "Title": "Neoplasma Jinak" },
+          { "Code": "D37-D48", "Title": "Neoplasma dengan Sifat Tidak Pasti atau Tidak Diketahui [Lihat catatan sebelum D37]" }
+        ]
+      },
+      {
+        "Chapter": "III",
+        "Blocks": "D50-D89",
+        "Title": "Penyakit Organ Darah dan Pembentukan Sel Darah serta Beberapa Gangguan yang Melibatkan Mekanisme Kekebalan Tubuh",
+        "Categories": [
+          { "Code": "D50-D53", "Title": "Anemia Gizi" },
+          { "Code": "D55-D59", "Title": "Anemia Hemolitik" },
+          { "Code": "D60-D64", "Title": "Aplastik dan Anemia Lainnya" },
+          { "Code": "D65-D69", "Title": "Gangguan Pembekuan, Purpura, dan Kondisi Hemoragik Lainnya" },
+          { "Code": "D70-D77", "Title": "Penyakit Lain pada Darah dan Organ Pembentukan Sel Darah" },
+          { "Code": "D80-D89", "Title": "Beberapa Gangguan yang Melibatkan Mekanisme Kekebalan Tubuh" }
+        ]
+      },
+      {
+        "Chapter": "IV",
+        "Blocks": "E00-E90",
+        "Title": "Penyakit Kelenjar Endokrin, Gizi, dan Metabolik",
+        "Categories": [
+          { "Code": "E00-E07", "Title": "Gangguan Kelenjar Tiroid" },
+          { "Code": "E10-E14", "Title": "Diabetes Mellitus" },
+          { "Code": "E15-E16", "Title": "Gangguan Lain pada Regulasi Glukosa dan Sekresi Pankreas Internal" },
+          { "Code": "E20-E35", "Title": "Gangguan Kelenjar Endokrin Lainnya" },
+          { "Code": "E40-E46", "Title": "Kekurangan Gizi" },
+          { "Code": "E50-E64", "Title": "Kekurangan Gizi Lainnya" },
+          { "Code": "E65-E68", "Title": "Obesitas dan Hiperalimentasi Lainnya" },
+          { "Code": "E70-E90", "Title": "Gangguan Metabolik" }
+        ]
+      },
+      {
+        "Chapter": "V",
+        "Blocks": "F00-F99",
+        "Title": "Gangguan Mental dan Perilaku",
+        "Categories": [
+          { "Code": "F00-F09", "Title": "Gangguan Mental Organik, Termasuk Simptomatik" },
+          { "Code": "F10-F19", "Title": "Gangguan Mental dan Perilaku Akibat Penggunaan Zat Psikoaktif" },
+          { "Code": "F20-F29", "Title": "Skizofrenia, Gangguan Skizotipal, dan Gangguan Delusi" },
+          { "Code": "F30-F39", "Title": "Gangguan Mood [Afektif]" },
+          { "Code": "F40-F48", "Title": "Gangguan Neuritik, Terkait Stres, dan Somatoform" },
+          { "Code": "F50-F59", "Title": "Sindrom Perilaku yang Terkait dengan Gangguan Fisiologis dan Faktor-faktor Fisik" },
+          { "Code": "F60-F69", "Title": "Gangguan Kepribadian Dewasa dan Perilaku" },
+          { "Code": "F70-F79", "Title": "Keterbelakangan Mental" },
+          { "Code": "F80-F89", "Title": "Gangguan Perkembangan Psikologis" },
+          { "Code": "F90-F98", "Title": "Gangguan Perilaku dan Emosi dengan Onset Biasanya Terjadi pada Anak dan Remaja" },
+          { "Code": "F99", "Title": "Gangguan Mental Tidak Spesifik" }
+        ]
+      },
+      {
+        "Chapter": "VI",
+        "Blocks": "G00-G99",
+        "Title": "Penyakit Sistem Saraf",
+        "Categories": [
+          { "Code": "G00-G09", "Title": "Penyakit Inflamasi Sistem Saraf Pusat" },
+          { "Code": "G10-G13", "Title": "Atrofi Sistemik yang Lebih Menonjol Mempengaruhi Sistem Saraf Pusat" },
+          { "Code": "G20-G26", "Title": "Gangguan Ekstrapiramidal dan Pergerakan" },
+          { "Code": "G30-G32", "Title": "Gangguan Degeneratif Lainnya pada Sistem Saraf" },
+          { "Code": "G35-G37", "Title": "Gangguan Demielinisasi Sistem Saraf Pusat" },
+          { "Code": "G40-G47", "Title": "Gangguan Episodik dan Paroksismal" },
+          { "Code": "G50-G59", "Title": "Gangguan Saraf, Akar Saraf, dan Pleksus" },
+          { "Code": "G60-G64", "Title": "Polineuropati dan Gangguan Lain pada Sistem Saraf Perifer" },
+          { "Code": "G70-G73", "Title": "Penyakit dari Persimpangan Saraf dan Otot" },
+          { "Code": "G80-G83", "Title": "Cerebral Palsy dan Sindrom Paralitik Lainnya" },
+          { "Code": "G90-G99", "Title": "Gangguan Lain pada Sistem Saraf" }
+        ]
+      },
+      {
+        "Chapter": "VII",
+        "Blocks": "H00-H59",
+        "Title": "Penyakit Mata dan Aksesoris",
+        "Categories": [
+          { "Code": "H00-H06", "Title": "Gangguan Kelopak Mata, Sistem Air Mata, dan Orbita" },
+          { "Code": "H10-H13", "Title": "Gangguan Konjungtiva" },
+          { "Code": "H15-H22", "Title": "Gangguan Sklera, Kornea, Iris, dan Tubuh Ciliar" },
+          { "Code": "H25-H28", "Title": "Gangguan Lensa Mata" },
+          { "Code": "H30-H36", "Title": "Gangguan Koroid dan Retina" },
+          { "Code": "H40-H42", "Title": "Glaukoma" },
+          { "Code": "H43-H45", "Title": "Gangguan Tubuh Vitreous dan Globe Mata" },
+          { "Code": "H46-H48", "Title": "Gangguan Saraf Optik dan Saluran Visual" },
+          { "Code": "H49-H52", "Title": "Gangguan Otot Mata, Gerakan Binoskopi, Akomodasi, dan Refraksi" },
+          { "Code": "H53-H54", "Title": "Gangguan Penglihatan dan Buta" },
+          { "Code": "H55-H59", "Title": "Gangguan Lain pada Mata dan Aksesoris" }
+        ]
+      },
+      {
+        "Chapter": "VIII",
+        "Blocks": "H60-H95",
+        "Title": "Penyakit Telinga dan Proses Mastoid",
+        "Categories": [
+          { "Code": "H60-H62", "Title": "Penyakit Telinga Eksternal" },
+          { "Code": "H65-H75", "Title": "Penyakit Telinga Tengah dan Mastoid" },
+          { "Code": "H80-H83", "Title": "Gangguan Labyrinth" },
+          { "Code": "H90-H95", "Title": "Gangguan Telinga dan Gempa Akustik Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "IX",
+        "Blocks": "I00-I99",
+        "Title": "Penyakit Sistem Peredaran Darah",
+        "Categories": [
+          { "Code": "I00-I02", "Title": "Penyakit Jantung Reumatik" },
+          { "Code": "I05-I09", "Title": "Penyakit Jantung Lainnya" },
+          { "Code": "I10-I16", "Title": "Penyakit Hipertensi" },
+          { "Code": "I20-I25", "Title": "Penyakit Jantung Iskemik" },
+          { "Code": "I26-I28", "Title": "Penyakit Jantung Lainnya" },
+          { "Code": "I30-I52", "Title": "Penyakit Jantung Lainnya" },
+          { "Code": "I60-I69", "Title": "Penyakit Sirkulasi Otak" },
+          { "Code": "I70-I79", "Title": "Penyakit Arteri, Arteriol, dan Kapiler" },
+          { "Code": "I80-I89", "Title": "Penyakit Vena, Vena Kapiler, dan Sistem Limfatik, Lainnya" },
+          { "Code": "I95-I99", "Title": "Gangguan Sistem Peredaran Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "X",
+        "Blocks": "J00-J99",
+        "Title": "Penyakit Sistem Pernapasan",
+        "Categories": [
+          { "Code": "J00-J06", "Title": "Infeksi Saluran Pernapasan Atas Akut" },
+          { "Code": "J09-J18", "Title": "Influenza dan Pneumonia" },
+          { "Code": "J20-J22", "Title": "Infeksi Saluran Pernapasan Bawah Akut Lainnya" },
+          { "Code": "J30-J39", "Title": "Penyakit Saluran Pernapasan Atas Lainnya" },
+          { "Code": "J40-J47", "Title": "Penyakit Saluran Pernapasan Bawah Kronis" },
+          { "Code": "J60-J70", "Title": "Penyakit Paru-paru Akibat Agen Eksternal" },
+          { "Code": "J80-J84", "Title": "Penyakit Saluran Pernapasan Lainnya yang Utamanya Mempengaruhi Interstitium" },
+          { "Code": "J85-J86", "Title": "Kondisi Supuratif dan Nekrotik Saluran Pernapasan Bawah" },
+          { "Code": "J90-J94", "Title": "Penyakit Pleura Lainnya" },
+          { "Code": "J95-J99", "Title": "Penyakit Pernapasan Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XI",
+        "Blocks": "K00-K93",
+        "Title": "Penyakit Sistem Pencernaan",
+        "Categories": [
+          { "Code": "K00-K14", "Title": "Penyakit Rongga Mulut, Kelenjar Air Liur, dan Rahang" },
+          { "Code": "K20-K31", "Title": "Penyakit Kerongkongan, Lambung, dan Duodenum" },
+          { "Code": "K35-K38", "Title": "Penyakit Usus Buntu" },
+          { "Code": "K40-K46", "Title": "Hernia" },
+          { "Code": "K50-K52", "Title": "Enteritis dan Kolitis Non-Infektif" },
+          { "Code": "K55-K63", "Title": "Penyakit Usus Lainnya" },
+          { "Code": "K65-K67", "Title": "Penyakit Peritoneum" },
+          { "Code": "K70-K77", "Title": "Penyakit Hati" },
+          { "Code": "K80-K87", "Title": "Gangguan Kandung Empedu, Saluran Empedu, dan Pankreas" },
+          { "Code": "K90-K93", "Title": "Penyakit Sistem Pencernaan Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XII",
+        "Blocks": "L00-L99",
+        "Title": "Penyakit Kulit dan Jaringan Subkutan",
+        "Categories": [
+          { "Code": "L00-L08", "Title": "Infeksi Kulit dan Jaringan Subkutan" },
+          { "Code": "L10-L14", "Title": "Gangguan Bula" },
+          { "Code": "L20-L30", "Title": "Dermatitis dan Eksim" },
+          { "Code": "L40-L45", "Title": "Gangguan Papuloskuamosa" },
+          { "Code": "L50-L54", "Title": "Urtikaria dan Eritema" },
+          { "Code": "L55-L59", "Title": "Gangguan Kulit yang Berhubungan dengan Radiasi" },
+          { "Code": "L60-L75", "Title": "Gangguan Penunjang Kulit" },
+          { "Code": "L80-L99", "Title": "Gangguan Kulit dan Jaringan Subkutan Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XIII",
+        "Blocks": "M00-M99",
+        "Title": "Penyakit Sistem Otot dan Jaringan Penghubung",
+        "Categories": [
+          { "Code": "M00-M25", "Title": "Artropati" },
+          { "Code": "M05-M14", "Title": "Artropati Inflamasi Poliartritis" },
+          { "Code": "M15-M19", "Title": "Artropati Artrosis" },
+          { "Code": "M20-M25", "Title": "Gangguan Sendi Lainnya" },
+          { "Code": "M30-M36", "Title": "Gangguan Sistem Jaringan Penghubung" },
+          { "Code": "M40-M54", "Title": "Gangguan Tulang Belakang" },
+          { "Code": "M60-M79", "Title": "Gangguan Jaringan Lunak" },
+          { "Code": "M80-M94", "Title": "Gangguan Tulang dan Kartilago" },
+          { "Code": "M95-M99", "Title": "Gangguan Sistem Otot dan Jaringan Penghubung Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XIV",
+        "Blocks": "N00-N99",
+        "Title": "Penyakit Sistem Genitourinari",
+        "Categories": [
+          { "Code": "N00-N08", "Title": "Penyakit Glomerulus" },
+          { "Code": "N10-N16", "Title": "Penyakit Ginjal Tubulo-interstisial" },
+          { "Code": "N17-N19", "Title": "Gagal Ginjal" },
+          { "Code": "N20-N23", "Title": "Urolitiasis" },
+          { "Code": "N25-N29", "Title": "Gangguan Ginjal dan Ureter Lainnya" },
+          { "Code": "N30-N39", "Title": "Penyakit Sistem Pencernaan Atas Lainnya" },
+          { "Code": "N40-N51", "Title": "Penyakit Organ Genital Pria" },
+          { "Code": "N60-N64", "Title": "Gangguan Payudara" },
+          { "Code": "N70-N77", "Title": "Penyakit Inflamasi Organ Pelvis Wanita" },
+          { "Code": "N80-N98", "Title": "Gangguan Noninflamasi pada Organ Genital Wanita" },
+          { "Code": "N99", "Title": "Gangguan Sistem Genitourinari Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XV",
+        "Blocks": "O00-O99",
+        "Title": "Kehamilan, Persalinan, dan Nifas",
+        "Categories": [
+          { "Code": "O00-O08", "Title": "Kehamilan dengan Hasil Abortus" },
+          { "Code": "O10-O16", "Title": "Edema, Proteinuria, dan Gangguan Hipertensi pada Kehamilan, Persalinan, dan Nifas" },
+          { "Code": "O20-O29", "Title": "Gangguan Ibu Lainnya yang Sebagian Besar Berhubungan dengan Kehamilan" },
+          { "Code": "O30-O48", "Title": "Perawatan Ibu yang Berhubungan dengan Fetus dan Cavity Amnion serta Kemungkinan Masalah Persalinan" },
+          { "Code": "O60-O75", "Title": "Komplikasi Persalinan dan Nifas" },
+          { "Code": "O80-O84", "Title": "Persalinan" },
+          { "Code": "O85-O92", "Title": "Komplikasi yang Sebagian Besar Berhubungan dengan Nifas" },
+          { "Code": "O95-O99", "Title": "Kondisi Obstetrik Lainnya yang Tidak Diklasifikasikan di Tempat Lain" }
+        ]
+      },
+      {
+        "Chapter": "XVI",
+        "Blocks": "P00-P96",
+        "Title": "Kondisi Tertentu yang Bermula pada Periode Perinatal",
+        "Categories": [
+          { "Code": "P00-P04", "Title": "Janin dan Bayi yang Terpengaruh oleh Faktor Ibu dan oleh Komplikasi Kehamilan, Persalinan, dan Nifas" },
+          { "Code": "P05-P08", "Title": "Gangguan Berhubungan dengan Durasi Kehamilan dan Pertumbuhan Janin" },
+          { "Code": "P10-P15", "Title": "Trauma Lahir" },
+          { "Code": "P20-P29", "Title": "Gangguan Pernapasan dan Kardiovaskular yang Khusus untuk Periode Perinatal" },
+          { "Code": "P35-P39", "Title": "Infeksi yang Khusus untuk Periode Perinatal" },
+          { "Code": "P50-P61", "Title": "Gangguan Hemoragik dan Hematologis pada Janin dan Bayi" },
+          { "Code": "P70-P74", "Title": "Gangguan Endokrin dan Metabolik Transitori Khusus untuk Janin dan Bayi" },
+          { "Code": "P75-P78", "Title": "Gangguan Sistem Pencernaan pada Janin dan Bayi" },
+          { "Code": "P80-P83", "Title": "Kondisi yang Melibatkan Kulit dan Regulasi Suhu Janin dan Bayi" },
+          { "Code": "P90-P96", "Title": "Kondisi Lainnya yang Bermula pada Periode Perinatal" }
+        ]
+      },
+      {
+        "Chapter": "XVII",
+        "Blocks": "Q00-Q99",
+        "Title": "Kelainan Kongenital, Deformitas, dan Kelainan Kromosom",
+        "Categories": [
+          { "Code": "Q00-Q07", "Title": "Kelainan Kongenital Sistem Saraf" },
+          { "Code": "Q10-Q18", "Title": "Kelainan Kongenital Mata, Telinga, Wajah, dan Leher" },
+          { "Code": "Q20-Q28", "Title": "Kelainan Kongenital Sistem Peredaran Darah" },
+          { "Code": "Q30-Q34", "Title": "Kelainan Kongenital Sistem Pernapasan" },
+          { "Code": "Q35-Q37", "Title": "Spilus dan Fisura Palatum" },
+          { "Code": "Q38-Q45", "Title": "Kelainan Kongenital Sistem Pencernaan Lainnya" },
+          { "Code": "Q50-Q56", "Title": "Kelainan Kongenital Organ Genital Pria" },
+          { "Code": "Q60-Q64", "Title": "Kelainan Kongenital Sistem Pencernaan dan Urinari" },
+          { "Code": "Q65-Q79", "Title": "Kelainan dan Deformitas Sistem Otot dan Jaringan Penghubung" },
+          { "Code": "Q80-Q89", "Title": "Kelainan Kongenital Lainnya" },
+          { "Code": "Q90-Q99", "Title": "Kelainan Kromosom, Tidak Diklasifikasikan di Tempat Lain" }
+        ]
+      },
+      {
+        "Chapter": "XVIII",
+        "Blocks": "R00-R99",
+        "Title": "Gejala, Tanda, dan Temuan Klinis Abnormal, Tidak Diklasifikasikan di Tempat Lain",
+        "Categories": [
+          { "Code": "R00-R09", "Title": "Gejala dan Tanda yang Melibatkan Sistem Peredaran dan Pernapasan" },
+          { "Code": "R10-R19", "Title": "Gejala dan Tanda yang Melibatkan Sistem Pencernaan dan Perut" },
+          { "Code": "R20-R23", "Title": "Gejala dan Tanda yang Melibatkan Kulit dan Jaringan Subkutan" },
+          { "Code": "R25-R29", "Title": "Gejala dan Tanda yang Melibatkan Sistem Saraf dan Otot" },
+          { "Code": "R30-R39", "Title": "Gejala dan Tanda yang Melibatkan Sistem Genitourinari" },
+          { "Code": "R40-R46", "Title": "Gangguan Kesadaran" },
+          { "Code": "R47-R49", "Title": "Gangguan Pengucapan dan Artikulasi" },
+          { "Code": "R50-R69", "Title": "Gejala dan Tanda yang Melibatkan Suhu Tubuh, Fungsi Kardiovaskular, dan Sistem Pernapasan" },
+          { "Code": "R70-R79", "Title": "Gejala dan Tanda yang Melibatkan Darah dan Organ Pembentuk Darah" },
+          { "Code": "R80-R82", "Title": "Gejala dan Tanda yang Melibatkan Peredaran Darah pada Anak Bayi" },
+          { "Code": "R83-R89", "Title": "Abnormalitas Temuan Laboratorium pada Darah, Cairan, dan Elektrolit" },
+          { "Code": "R90-R94", "Title": "Gejala dan Tanda yang Melibatkan Sistem Pencernaan, Nutrisi, dan Metabolisme" },
+          { "Code": "R95-R99", "Title": "Gejala dan Tanda yang Melibatkan Sistem Peredaran dan Pernapasan pada Anak Bayi" }
+        ]
+      },
+      {
+        "Chapter": "XIX",
+        "Blocks": "S00-T98",
+        "Title": "Cedera, Avulsi, dan Penyakit tertentu yang Disebabkan oleh Penyokong Eksternal",
+        "Categories": [
+          { "Code": "S00-S09", "Title": "Cedera Kepala" },
+          { "Code": "S10-S19", "Title": "Cedera Leher" },
+          { "Code": "S20-S29", "Title": "Cedera Dada, Abdomen, Punggung, dan Panggul" },
+          { "Code": "S30-S39", "Title": "Cedera Pinggul dan Paha" },
+          { "Code": "S40-S49", "Title": "Cedera Bahu dan Lengan" },
+          { "Code": "S50-S59", "Title": "Cedera Siku dan Lengan Bawah" },
+          { "Code": "S60-S69", "Title": "Cedera Pergelangan Tangan dan Tangan" },
+          { "Code": "S70-S79", "Title": "Cedera Pangkal Paha, Lutut, dan Kaki" },
+          { "Code": "S80-S89", "Title": "Cedera Lutut dan Kaki Bawah" },
+          { "Code": "S90-S99", "Title": "Cedera Pergelangan Kaki dan Kaki" },
+          { "Code": "T00-T07", "Title": "Efek Cedera Kepala" },
+          { "Code": "T08-T14", "Title": "Efek Cedera Leher" },
+          { "Code": "T15-T19", "Title": "Efek Cedera Dada, Abdomen, Punggung, dan Panggul" },
+          { "Code": "T20-T25", "Title": "Efek Cedera Pinggul dan Paha" },
+          { "Code": "T26-T28", "Title": "Efek Cedera Bahu dan Lengan" },
+          { "Code": "T29-T32", "Title": "Efek Cedera Siku dan Lengan Bawah" },
+          { "Code": "T33-T35", "Title": "Efek Cedera Pergelangan Tangan dan Tangan" },
+          { "Code": "T36-T45", "Title": "Efek Cedera Pangkal Paha, Lutut, dan Kaki" },
+          { "Code": "T46-T49", "Title": "Efek Cedera Lutut dan Kaki Bawah" },
+          { "Code": "T50-T51", "Title": "Efek Cedera Pergelangan Kaki dan Kaki" },
+          { "Code": "T52-T65", "Title": "Efek Kelebihan Tenaga Melebihi Kemampuan Fisiologis yang Melelahkan dan Kekurangan Tenaga, Penyokong dan Tegangan Melelahkan" },
+          { "Code": "T66-T78", "Title": "Efek Suhu Ekstrim" },
+          { "Code": "T79", "Title": "Efek Listrik, Radiasi, dan Tekanan Ekstrim Lainnya" },
+          { "Code": "T80-T88", "Title": "Komplikasi Operasi dan Prosedur Medis" },
+          { "Code": "T90-T98", "Title": "Efek Toksik Zat yang Asalnya dari Lingkungan dan Zat yang Digunakan untuk Tujuan Tertentu" }
+        ]
+      },
+      {
+        "Chapter": "XX",
+        "Blocks": "V01-Y98",
+        "Title": "Kecelakaan, Kekerasan, dan Penyebab Eksternal Lainnya",
+        "Categories": [
+          { "Code": "V01-X59", "Title": "Kecelakaan" },
+          { "Code": "X60-X84", "Title": "Cara Bunuh Diri" },
+          { "Code": "X85-Y09", "Title": "Kekerasan antar Manusia" },
+          { "Code": "Y10-Y34", "Title": "Kekerasan yang Melibatkan Alat Nonmesin dan Tidak Jelas" },
+          { "Code": "Y35-Y36", "Title": "Korban Senjata Api, Senjata, dan Bahan Peledak" },
+          { "Code": "Y40-Y59", "Title": "Efek yang Berhubungan dengan Penyebab Eksternal" },
+          { "Code": "Y60-Y69", "Title": "Eksposur Terhadap Faktor Lingkungan yang Berbahaya" },
+          { "Code": "Y70-Y82", "Title": "Intervensi Operasi dan Pembedahan Lainnya" },
+          { "Code": "Y83-Y84", "Title": "Prosedur Medis yang Melibatkan Kerusakan Tidak Absorbsi Nonthermal yang Terencana atau yang Tidak Diharapkan" },
+          { "Code": "Y85-Y89", "Title": "Situasi Tertentu yang Memberikan Layanan Medis" },
+          { "Code": "Y90-Y98", "Title": "Penyebab Eksternal Lainnya" }
+        ]
+      },
+      {
+        "Chapter": "XXI",
+        "Blocks": "Z00-Z99",
+        "Title": "Faktor yang Mempengaruhi Kesehatan dan Pelayanan Kesehatan Kontak dengan Pelayanan Kesehatan",
+        "Categories": [
+          { "Code": "Z00-Z13", "Title": "Kontak dengan Pelayanan Kesehatan" },
+          { "Code": "Z20-Z29", "Title": "Riwayat Vaksinasi dan Kekebalan yang Berhubungan dengan Pelayanan Kesehatan" },
+          { "Code": "Z30-Z39", "Title": "Pengendalian Kelahiran" },
+          { "Code": "Z40-Z54", "Title": "Penyakit Kronis yang Berhubungan dengan Pelayanan Kesehatan" },
+          { "Code": "Z55-Z65", "Title": "Faktor Psikososial, Perilaku, dan Lingkungan yang Berhubungan dengan Pelayanan Kesehatan" },
+          { "Code": "Z70-Z76", "Title": "Konseling Terkait dengan Pelayanan Kesehatan" },
+          { "Code": "Z80-Z99", "Title": "Faktor yang Mempengaruhi Kesehatan dan Pelayanan Kesehatan Lainnya" }
+        ]
+      }
+    ]
+  }
+  

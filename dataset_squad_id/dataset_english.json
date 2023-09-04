@@ -1,0 +1,339 @@
+{
+    "Chapter List": [
+      {
+        "Chapter": "I",
+        "Blocks": "A00-B99",
+        "Title": "Certain infectious and parasitic diseases",
+        "Categories": [
+          { "Code": "A00-A09", "Title": "Intestinal infectious diseases" },
+          { "Code": "A15-A19", "Title": "Tuberculosis" },
+          { "Code": "A20-A28", "Title": "Certain zoonotic bacterial diseases" },
+          { "Code": "A30-A49", "Title": "Other bacterial diseases" },
+          { "Code": "A50-A64", "Title": "Infections with a predominantly sexual mode of transmission" },
+          { "Code": "A65-A69", "Title": "Other spirochaetal diseases" },
+          { "Code": "A70-A74", "Title": "Other diseases caused by chlamydiae" },
+          { "Code": "A75-A79", "Title": "Rickettsioses" },
+          { "Code": "A80-A89", "Title": "Viral infections of the central nervous system" },
+          { "Code": "A90-A99", "Title": "Arthropod-borne viral fevers and viral haemorrhagic fevers" },
+          { "Code": "B00-B09", "Title": "Viral infections characterized by skin and mucous membrane lesions" },
+          { "Code": "B15-B19", "Title": "Viral hepatitis" },
+          { "Code": "B20-B24", "Title": "Human immunodeficiency virus [HIV] disease" },
+          { "Code": "B25-B34", "Title": "Other viral diseases" },
+          { "Code": "B35-B49", "Title": "Mycoses" },
+          { "Code": "B50-B64", "Title": "Protozoal diseases" },
+          { "Code": "B65-B83", "Title": "Helminthiases" },
+          { "Code": "B85-B89", "Title": "Pediculosis, acariasis and other infestations" },
+          { "Code": "B90-B94", "Title": "Sequelae of infectious and parasitic diseases" },
+          { "Code": "B95-B98", "Title": "Bacterial, viral and other infectious agents" },
+          { "Code": "B99", "Title": "Other infectious diseases" }
+        ]
+      },
+      {
+        "Chapter": "II",
+        "Blocks": "C00-D48",
+        "Title": "Neoplasms",
+        "Categories": [
+          { "Code": "C00-C75", "Title": "Malignant neoplasms, stated or presumed to be primary, of specified sites, except of lymphoid, haematopoietic and related tissue" },
+          { "Code": "C00-C14", "Title": "Lip, oral cavity and pharynx" },
+          { "Code": "C15-C26", "Title": "Digestive organs" },
+          { "Code": "C30-C39", "Title": "Respiratory and intrathoracic organs" },
+          { "Code": "C40-C41", "Title": "Bone and articular cartilage" },
+          { "Code": "C43-C44", "Title": "Skin" },
+          { "Code": "C45-C49", "Title": "Mesothelial and soft tissue" },
+          { "Code": "C50", "Title": "Breast" },
+          { "Code": "C51-C58", "Title": "Female genital organs" },
+          { "Code": "C60-C63", "Title": "Male genital organs" },
+          { "Code": "C64-C68", "Title": "Urinary tract" },
+          { "Code": "C69-C72", "Title": "Eye, brain and other parts of central nervous system" },
+          { "Code": "C73-C75", "Title": "Thyroid and other endocrine glands" },
+          { "Code": "C76-C80", "Title": "Malignant neoplasms of ill-defined, secondary and unspecified sites" },
+          { "Code": "C81-C96", "Title": "Malignant neoplasms, stated or presumed to be primary, of lymphoid, haematopoietic and related tissue" },
+          { "Code": "C97", "Title": "Malignant neoplasms of independent (primary) multiple sites" },
+          { "Code": "D00-D09", "Title": "In situ neoplasms" },
+          { "Code": "D10-D36", "Title": "Benign neoplasms" },
+          { "Code": "D37-D48", "Title": "Neoplasms of uncertain or unknown behaviour [see note before D37]" }
+        ]
+      },
+      {
+        "Chapter": "III",
+        "Blocks": "D50-D89",
+        "Title": "Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism",
+        "Categories": [
+          { "Code": "D50-D53", "Title": "Nutritional anaemias" },
+          { "Code": "D55-D59", "Title": "Haemolytic anaemias" },
+          { "Code": "D60-D64", "Title": "Aplastic and other anaemias" },
+          { "Code": "D65-D69", "Title": "Coagulation defects, purpura and other haemorrhagic conditions" },
+          { "Code": "D70-D77", "Title": "Other diseases of blood and blood-forming organs" },
+          { "Code": "D80-D89", "Title": "Certain disorders involving the immune mechanism" }
+        ]
+      },
+      {
+        "Chapter": "IV",
+        "Blocks": "E00-E90",
+        "Title": "Endocrine, nutritional and metabolic diseases",
+        "Categories": [
+          { "Code": "E00-E07", "Title": "Disorders of thyroid gland" },
+          { "Code": "E10-E14", "Title": "Diabetes mellitus" },
+          { "Code": "E15-E16", "Title": "Other disorders of glucose regulation and pancreatic internal secretion" },
+          { "Code": "E20-E35", "Title": "Disorders of other endocrine glands" },
+          { "Code": "E40-E46", "Title": "Malnutrition" },
+          { "Code": "E50-E64", "Title": "Other nutritional deficiencies" },
+          { "Code": "E65-E68", "Title": "Obesity and other hyperalimentation" },
+          { "Code": "E70-E90", "Title": "Metabolic disorders" }
+        ]
+      },
+      {
+        "Chapter": "V",
+        "Blocks": "F00-F99",
+        "Title": "Mental and behavioural disorders",
+        "Categories": [
+          { "Code": "F00-F09", "Title": "Organic, including symptomatic, mental disorders" },
+          { "Code": "F10-F19", "Title": "Mental and behavioural disorders due to psychoactive substance use" },
+          { "Code": "F20-F29", "Title": "Schizophrenia, schizotypal and delusional disorders" },
+          { "Code": "F30-F39", "Title": "Mood [affective] disorders" },
+          { "Code": "F40-F48", "Title": "Neurotic, stress-related and somatoform disorders" },
+          { "Code": "F50-F59", "Title": "Behavioural syndromes associated with physiological disturbances and physical factors" },
+          { "Code": "F60-F69", "Title": "Disorders of adult personality and behaviour" },
+          { "Code": "F70-F79", "Title": "Mental retardation" },
+          { "Code": "F80-F89", "Title": "Disorders of psychological development" },
+          { "Code": "F90-F98", "Title": "Behavioural and emotional disorders with onset usually occurring in childhood and adolescence" },
+          { "Code": "F99", "Title": "Unspecified mental disorder" }
+        ]
+      },
+      {
+        "Chapter": "VI",
+        "Blocks": "G00-G99",
+        "Title": "Diseases of the nervous system",
+        "Categories": [
+          { "Code": "G00-G09", "Title": "Inflammatory diseases of the central nervous system" },
+          { "Code": "G10-G13", "Title": "Systemic atrophies primarily affecting the central nervous system" },
+          { "Code": "G20-G26", "Title": "Extrapyramidal and movement disorders" },
+          { "Code": "G30-G32", "Title": "Other degenerative diseases of the nervous system" },
+          { "Code": "G35-G37", "Title": "Demyelinating diseases of the central nervous system" },
+          { "Code": "G40-G47", "Title": "Episodic and paroxysmal disorders" },
+          { "Code": "G50-G59", "Title": "Nerve, nerve root and plexus disorders" },
+          { "Code": "G60-G64", "Title": "Polyneuropathies and other disorders of the peripheral nervous system" },
+          { "Code": "G70-G73", "Title": "Diseases of myoneural junction and muscle" },
+          { "Code": "G80-G83", "Title": "Cerebral palsy and other paralytic syndromes" },
+          { "Code": "G90-G99", "Title": "Other disorders of the nervous system" }
+        ]
+      },
+      {
+        "Chapter": "VII",
+        "Blocks": "H00-H59",
+        "Title": "Diseases of the eye and adnexa",
+        "Categories": [
+          { "Code": "H00-H06", "Title": "Disorders of eyelid, lacrimal system and orbit" },
+          { "Code": "H10-H13", "Title": "Disorders of conjunctiva" },
+          { "Code": "H15-H22", "Title": "Disorders of sclera, cornea, iris and ciliary body" },
+          { "Code": "H25-H28", "Title": "Disorders of lens" },
+          { "Code": "H30-H36", "Title": "Disorders of choroid and retina" },
+          { "Code": "H40-H42", "Title": "Glaucoma" },
+          { "Code": "H43-H45", "Title": "Disorders of vitreous body and globe" },
+          { "Code": "H46-H48", "Title": "Disorders of optic nerve and visual pathways" },
+          { "Code": "H49-H52", "Title": "Disorders of ocular muscles, binocular movement, accommodation and refraction" },
+          { "Code": "H53-H54", "Title": "Visual disturbances and blindness" },
+          { "Code": "H55-H59", "Title": "Other disorders of eye and adnexa" }
+        ]
+      },
+      {
+        "Chapter": "VIII",
+        "Blocks": "H60-H95",
+        "Title": "Diseases of the ear and mastoid process",
+        "Categories": [
+          { "Code": "H60-H62", "Title": "Diseases of external ear" },
+          { "Code": "H65-H75", "Title": "Diseases of middle ear and mastoid" },
+          { "Code": "H80-H83", "Title": "Diseases of inner ear" },
+          { "Code": "H90-H95", "Title": "Other disorders of ear" }
+        ]
+      },
+      {
+        "Chapter": "IX",
+        "Blocks": "I00-I99",
+        "Title": "Diseases of the circulatory system",
+        "Categories": [
+          { "Code": "I00-I02", "Title": "Acute rheumatic fever" },
+          { "Code": "I05-I09", "Title": "Chronic rheumatic heart diseases" },
+          { "Code": "I10-I15", "Title": "Hypertensive diseases" },
+          { "Code": "I20-I25", "Title": "Ischaemic heart diseases" },
+          { "Code": "I26-I28", "Title": "Pulmonary heart disease and diseases of pulmonary circulation" },
+          { "Code": "I30-I52", "Title": "Other forms of heart disease" },
+          { "Code": "I60-I69", "Title": "Cerebrovascular diseases" },
+          { "Code": "I70-I79", "Title": "Diseases of arteries, arterioles and capillaries" },
+          { "Code": "I80-I89", "Title": "Diseases of veins, lymphatic vessels and lymph nodes, not elsewhere classified" },
+          { "Code": "I95-I99", "Title": "Other and unspecified disorders of the circulatory system" }
+        ]
+      },
+      {
+        "Chapter": "X",
+        "Blocks": "J00-J99",
+        "Title": "Diseases of the respiratory system",
+        "Categories": [
+          { "Code": "J00-J06", "Title": "Acute upper respiratory infections" },
+          { "Code": "J09-J18", "Title": "Influenza and pneumonia" },
+          { "Code": "J20-J22", "Title": "Other acute lower respiratory infections" },
+          { "Code": "J30-J39", "Title": "Other diseases of upper respiratory tract" },
+          { "Code": "J40-J47", "Title": "Chronic lower respiratory diseases" },
+          { "Code": "J60-J70", "Title": "Lung diseases due to external agents" },
+          { "Code": "J80-J84", "Title": "Other respiratory diseases principally affecting the interstitium" },
+          { "Code": "J85-J86", "Title": "Suppurative and necrotic conditions of lower respiratory tract" },
+          { "Code": "J90-J94", "Title": "Other diseases of pleura" },
+          { "Code": "J95-J99", "Title": "Other diseases of the respiratory system" }
+        ]
+      },
+      {
+        "Chapter": "XI",
+        "Blocks": "K00-K93",
+        "Title": "Diseases of the digestive system",
+        "Categories": [
+          { "Code": "K00-K14", "Title": "Diseases of oral cavity, salivary glands and jaws" },
+          { "Code": "K20-K31", "Title": "Diseases of oesophagus, stomach and duodenum" },
+          { "Code": "K35-K38", "Title": "Diseases of appendix" },
+          { "Code": "K40-K46", "Title": "Hernia" },
+          { "Code": "K50-K52", "Title": "Noninfective enteritis and colitis" },
+          { "Code": "K55-K63", "Title": "Other diseases of intestines" },
+          { "Code": "K65-K67", "Title": "Diseases of peritoneum" },
+          { "Code": "K70-K77", "Title": "Diseases of liver" },
+          { "Code": "K80-K87", "Title": "Disorders of gallbladder, biliary tract and pancreas" },
+          { "Code": "K90-K93", "Title": "Other diseases of the digestive system" }
+        ]
+      },
+      {
+        "Chapter": "XII",
+        "Blocks": "L00-L99",
+        "Title": "Diseases of the skin and subcutaneous tissue",
+        "Categories": [
+          { "Code": "L00-L08", "Title": "Infections of the skin and subcutaneous tissue" },
+          { "Code": "L10-L14", "Title": "Bullous disorders" },
+          { "Code": "L20-L30", "Title": "Dermatitis and eczema" },
+          { "Code": "L40-L45", "Title": "Papulosquamous disorders" },
+          { "Code": "L50-L54", "Title": "Urticaria and erythema" },
+          { "Code": "L55-L59", "Title": "Radiation-related disorders of the skin and subcutaneous tissue" },
+          { "Code": "L60-L75", "Title": "Disorders of skin appendages" },
+          { "Code": "L80-L99", "Title": "Other disorders of the skin and subcutaneous tissue" }
+        ]
+      },
+      {
+        "Chapter": "XIII",
+        "Blocks": "M00-M99",
+        "Title": "Diseases of the musculoskeletal system and connective tissue",
+        "Categories": [
+          { "Code": "M00-M25", "Title": "Arthropathies" },
+          { "Code": "M40-M54", "Title": "Dorsopathies" },
+          { "Code": "M60-M79", "Title": "Soft tissue disorders" },
+          { "Code": "M80-M94", "Title": "Osteopathies and chondropathies" },
+          { "Code": "M95-M99", "Title": "Other disorders of the musculoskeletal system and connective tissue" }
+        ]
+      },
+      {
+        "Chapter": "XIV",
+        "Blocks": "N00-N99",
+        "Title": "Diseases of the genitourinary system",
+        "Categories": [
+          { "Code": "N00-N08", "Title": "Glomerular diseases" },
+          { "Code": "N10-N16", "Title": "Renal tubulo-interstitial diseases" },
+          { "Code": "N17-N19", "Title": "Renal failure" },
+          { "Code": "N20-N23", "Title": "Urolithiasis" },
+          { "Code": "N25-N29", "Title": "Other disorders of kidney and ureter" },
+          { "Code": "N30-N39", "Title": "Other diseases of urinary system" },
+          { "Code": "N40-N51", "Title": "Diseases of male genital organs" },
+          { "Code": "N60-N64", "Title": "Disorders of breast" },
+          { "Code": "N70-N77", "Title": "Inflammatory diseases of female pelvic organs" },
+          { "Code": "N80-N98", "Title": "Noninflammatory disorders of female genital tract" },
+          { "Code": "N99", "Title": "Other disorders of genitourinary tract" }
+        ]
+      },
+      {
+        "Chapter": "XV",
+        "Blocks": "O00-O99",
+        "Title": "Pregnancy, childbirth and the puerperium",
+        "Categories": [
+          { "Code": "O00-O08", "Title": "Pregnancy with abortive outcome" },
+          { "Code": "O10-O16", "Title": "Oedema, proteinuria and hypertensive disorders in pregnancy, childbirth and the puerperium" },
+          { "Code": "O20-O29", "Title": "Other maternal disorders predominantly related to pregnancy" },
+          { "Code": "O30-O48", "Title": "Maternal care related to the fetus and amniotic cavity and possible delivery problems" },
+          { "Code": "O60-O75", "Title": "Complications of labour and delivery" },
+          { "Code": "O80-O84", "Title": "Single spontaneous delivery" },
+          { "Code": "O85-O92", "Title": "Multiple gestation" },
+          { "Code": "O94-O99", "Title": "Other obstetric conditions and procedures" }
+        ]
+      },
+      {
+        "Chapter": "XVI",
+        "Blocks": "P00-P96",
+        "Title": "Certain conditions originating in the perinatal period",
+        "Categories": [
+          { "Code": "P00-P04", "Title": "Fetus and newborn affected by maternal factors and by complications of pregnancy, labour and delivery" },
+          { "Code": "P05-P08", "Title": "Disorders related to length of gestation and fetal growth" },
+          { "Code": "P10-P15", "Title": "Birth trauma" },
+          { "Code": "P20-P29", "Title": "Respiratory and cardiovascular disorders specific to the perinatal period" },
+          { "Code": "P35-P39", "Title": "Infections specific to the perinatal period" },
+          { "Code": "P50-P61", "Title": "Haemorrhagic and haematological disorders of fetus and newborn" },
+          { "Code": "P70-P74", "Title": "Transitory endocrine and metabolic disorders specific to newborn" },
+          { "Code": "P75-P78", "Title": "Digestive system disorders of newborn" },
+          { "Code": "P80-P83", "Title": "Conditions involving the integument and temperature regulation of newborn" },
+          { "Code": "P90-P96", "Title": "Other disorders originating in the perinatal period" }
+        ]
+      },
+      {
+        "Chapter": "XVII",
+        "Blocks": "Q00-Q99",
+        "Title": "Congenital malformations, deformations and chromosomal abnormalities",
+        "Categories": [
+          { "Code": "Q00-Q07", "Title": "Congenital malformations of the nervous system" },
+          { "Code": "Q10-Q18", "Title": "Congenital malformations of eye, ear, face and neck" },
+          { "Code": "Q20-Q28", "Title": "Congenital malformations of circulatory system" },
+          { "Code": "Q30-Q34", "Title": "Congenital malformations of the respiratory system" },
+          { "Code": "Q35-Q37", "Title": "Cleft lip and cleft palate" },
+          { "Code": "Q38-Q45", "Title": "Other congenital malformations of the digestive system" },
+          { "Code": "Q50-Q56", "Title": "Congenital malformations of genital organs" },
+          { "Code": "Q60-Q64", "Title": "Congenital malformations of the urinary system" },
+          { "Code": "Q65-Q79", "Title": "Congenital malformations and deformations of the musculoskeletal system" },
+          { "Code": "Q80-Q89", "Title": "Other congenital malformations" },
+          { "Code": "Q90-Q99", "Title": "Chromosomal abnormalities, not elsewhere classified" }
+        ]
+      },
+      {
+        "Chapter": "XVIII",
+        "Blocks": "R00-R99",
+        "Title": "Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified",
+        "Categories": [
+          { "Code": "R00-R09", "Title": "Symptoms and signs involving the circulatory and respiratory systems" },
+          { "Code": "R10-R19", "Title": "Symptoms and signs involving the digestive system and abdomen" },
+          { "Code": "R20-R29", "Title": "Symptoms and signs involving the skin and subcutaneous tissue" },
+          { "Code": "R30-R39", "Title": "Symptoms and signs involving the urinary system" },
+          { "Code": "R40-R46", "Title": "Symptoms and signs involving cognition, perception, emotional state and behaviour" },
+          { "Code": "R47-R49", "Title": "Symptoms and signs involving speech and voice" },
+          { "Code": "R50-R69", "Title": "General symptoms and signs" },
+          { "Code": "R70-R79", "Title": "Abnormal findings on examination of blood, without diagnosis" },
+          { "Code": "R80-R82", "Title": "Abnormal findings on examination of urine, without diagnosis" },
+          { "Code": "R83-R89", "Title": "Abnormal findings on examination of other body fluids, substances and tissues, without diagnosis" },
+          { "Code": "R90-R94", "Title": "Abnormal findings on diagnostic imaging and in function studies, without diagnosis" },
+          { "Code": "R95-R99", "Title": "Ill-defined and unknown cause of mortality" }
+        ]
+      },
+      {
+        "Chapter": "XX",
+        "Blocks": "Z00-Z99",
+        "Title": "Factors influencing health status and contact with health services",
+        "Categories": [
+          { "Code": "Z00-Z13", "Title": "Persons encountering health services for examinations" },
+          { "Code": "Z20-Z29", "Title": "Persons with potential health hazards related to communicable diseases" },
+          { "Code": "Z30-Z39", "Title": "Persons encountering health services in circumstances related to reproduction" },
+          { "Code": "Z40-Z54", "Title": "Persons encountering health services in circumstances related to medical care" },
+          { "Code": "Z55-Z65", "Title": "Persons with potential health hazards related to socioeconomic and psychosocial circumstances" },
+          { "Code": "Z70-Z76", "Title": "Persons encountering health services in other circumstances" },
+          { "Code": "Z80-Z99", "Title": "Persons with potential health hazards related to family and personal history and certain conditions influencing health status" }
+        ]
+      },
+      {
+        "Chapter": "XXI",
+        "Blocks": "U00-U85",
+        "Title": "Codes for special purposes",
+        "Categories": [
+          { "Code": "U00-U49", "Title": "Provisional assignment of new diseases of uncertain etiology or emergency use" },
+          { "Code": "U50-U85", "Title": "Codes for special purposes" }
+        ]
+      }
+    ]
+  }

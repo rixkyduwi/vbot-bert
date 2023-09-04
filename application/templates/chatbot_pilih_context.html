@@ -138,6 +138,12 @@
     </main>
 
     <form class="msger-inputarea" id="kirim">
+        
+        <select name="id_context" id="id_context">
+            {%for i in range(0, len)%}
+            <option value="{{ i }}">{{ list_penyakit[i] }}</option>
+            {% endfor %}
+        </select>
       <input type="text" class="msger-input" id="textInput" name="pertanyaan" placeholder="Enter your message...">
       <button id="send" type="submit" class="msger-send-btn">Send</button>
     </form>
@@ -145,12 +151,14 @@
   <!-- partial -->
   <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
   <script>
+
     $(document).ready(function(){
 
     const msgerForm = get(".msger-inputarea");
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
     const TimeNow = get("#timenow");
+    
       var pilihan = ''
     $('#timenow').text(formatDate(new Date()))
     // Icons made by Freepik from www.flaticon.com
@@ -238,6 +246,8 @@ msgerChat.scrollTop += 500;
 if(side=="left"){
 //typeWriter(text,rand)
 }
+else if(side=="right"){
+}
 }
 function appendMessageGmaps(name, img, side, text,link) {
       //   Simple solution for small apps
@@ -276,6 +286,14 @@ console.log(txt.length)
     setTimeout(typeWriter, speed);
   }
 }
+$('#id_context').click(function(){
+    const selectBox = $('#id_context')
+    const value = $('#id_context  option:selected').val()
+    const text = $('#id_context  option:selected').text()
+    const msgTextbot = "Silahkan tanyakan tentang "+text;
+    appendMessage(BOT_NAME,BOT_IMG, "left", msgTextbot);
+
+});
 $('#deteksi').click(function(){
     const msgText = "deteksi penyakit";
     appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
@@ -285,6 +303,7 @@ $('#deteksi').click(function(){
     appendMessage(BOT_NAME,BOT_IMG, "left", msgTextbot);
   },500)
   })
+  var data = ""
     function botResponse(rawText,pilihan) {
       console.log(pilihan)
       const pertanyaan = rawText.toLowerCase();
@@ -299,9 +318,11 @@ $('#deteksi').click(function(){
         });
       }
       else{
-        $.get("/api/v1/model/predict", { pertanyaan: pertanyaan }).done(function (data) {
+        const id_context = $('#id_context  option:selected').val()
+        $.get("/api/v2/model/predict", { pertanyaan: pertanyaan, id_context: id_context }).done(function (data) {
           console.log(rawText);
-          console.log(data[0]);
+          console.log(data);
+          data = data;
           var status = data[0].status;
           if(status === true){
           var msgText = data[0].jawaban;
@@ -312,7 +333,7 @@ $('#deteksi').click(function(){
           var msglink = data[0].link;
           
           appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-          
+          appendMessage(BOT_NAME, BOT_IMG, "left", "score jawaban : "+scoree);
           if (msgsolusi== undefined){
             msgsolusi="maaf saya tidak tau"
           }
@@ -342,6 +363,54 @@ $('#deteksi').click(function(){
         });
       }
     }
+    var id = 0
+    function regenerate(data){
+        if (id == 3){
+            id = 0
+        }
+        else{
+            id = id +1
+        }
+        console.log(data[id]);
+          var status = data[id].status;
+          if(status === true){
+          var msgText = data[id].jawaban;
+          var scoree = data[id].score;
+          var msgsolusi = data[id].solusi;
+          var msgmaps = data[id].gmaps;
+          
+          var msglink = data[id].link;
+          
+          appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+          appendMessage(BOT_NAME, BOT_IMG, "left", "score jawaban : "+scoree);
+          if (msgsolusi== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else{
+            setTimeout(() => {
+          appendMessage(BOT_NAME, BOT_IMG, "left", msgsolusi);
+          },500)
+          }
+          if (msglink== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else if (msgmaps== undefined){
+            msgsolusi="maaf saya tidak tau"
+          }
+          else{
+            setTimeout(() => {
+          appendMessageGmaps(BOT_NAME, BOT_IMG, "left", msgmaps, msglink);
+          },700)
+          }
+          }
+          else{
+          var statusText = data[0].deskripsi;
+          appendMessage(BOT_NAME, BOT_IMG, "left", statusText);
+          appendMessage(BOT_NAME, BOT_IMG, "left", "Coba tanya <a href='https://chat.openai.com/'>Chatgpt<a>");
+          }
+    }
+    
+$('#regenerate').click(regenerate(data));
     function chatgpt(){msgerInput.value='Random Question';msgerForm.submit()}
     // Utils
     function get(selector, root = document) {

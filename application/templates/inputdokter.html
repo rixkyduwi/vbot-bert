@@ -17,21 +17,21 @@
               <div class="row pt-3">
                 <div class="col-md-12">
                   <div class="mb-3">
-                    <input type="hidden" class="form-control" name="id_dokter" value="123">
+                    <input type="hidden" class="form-control" name="id_dokter"id="id_dokter" value="123">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="mb-3"><label>
                       Nama Penyakit
                     </label>
-                    <input type="text" class="form-control" placeholder="masukan nama penyakit" name="nama_penyakit">
+                    <input type="text" class="form-control" placeholder="masukan nama penyakit" id="nama_penyakit"name="nama_penyakit">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="mb-3"><label>
                       Masukan Gejala apabila lebih dari 1 gunakan , (koma)
                     </label>
-                    <input type="text" class="form-control" placeholder="masukan gejala" name="gejala" id="">
+                    <input type="text" class="form-control" placeholder="masukan gejala" name="gejala" id="gejala">
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -39,14 +39,14 @@
                       Masukan cara pengobatan / penyegahannya
                     </label>
                     <input type="text" class="form-control" placeholder="masukan cara pengobatan / penyegahannya"
-                      name="pencegahan" id="">
+                    id="pencegahan" name="pencegahan" id="pencegahan">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="mb-3"><label>
                       Pilih Tempat Rujukan
                     </label>
-                    <select name="rujukan" class="form-control" id="">
+                    <select id="rujukan" name="rujukan" class="form-control" id="">
                       <option value="Rumah Sakit">Rumah Sakit</option>
                       <option value="Apotek">Apotek</option>
                       <option value="Puskesmas">Puskesmas</option>
@@ -57,7 +57,7 @@
                 <div class="col-md-12">
                   <div class="mb-3">
 
-                    <input class="form-control bg-success text-white" type="submit">
+                    <button class="form-control bg-success text-white" type="button" id="kirim" onclick="submitdata()">submit</button>
                   </div>
                 </div>
         </form>
@@ -66,4 +66,53 @@
   </div>
 
 </div>
+
+<script>
+  function submitdata(){
+    var url = "/api/v1/dokter/input"
+    id_dokter= $('#id_dokter').val()
+    nama_penyakit= $('#nama_penyakit').val()
+    pencegahan= $('#pencegahan').val()
+    gejala= $('#gejala').val()
+    rujukan= $('#rujukan').val()
+    if (id_dokter == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (nama_penyakit == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (pencegahan == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (gejala == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (rujukan == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else {
+    var formData = {
+    id_dokter: $('#id_dokter').val(),
+    nama_penyakit: $('#nama_penyakit').val(),
+    pencegahan: $('#pencegahan').val(),
+    gejala: $('#gejala').val(),
+    rujukan: $('#rujukan').val(),
+    };
+    console.log(formData)
+    axios.post(url, formData)
+        .then(function(response) {
+            console.log(response)
+            toastr.success("berhasil tambah data");
+        })
+        .catch(function(error) {
+            toastr.error('Gagal simpan data!');
+        });
+      }
+    }
+</script>
 {% endblock %}

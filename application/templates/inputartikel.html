@@ -8,7 +8,7 @@
                 <div class="card-header bg-info">
                     <h4 class="mb-0 text-white">Input URL Artikel</h4>
                 </div>
-                <form action="/api/v1/dokter/input" method="post" class="form-horizontal">
+                <form action="/input_artikel" method="post" class="form-horizontal">
 
                     <div>
                         <div class="card-body">
@@ -16,7 +16,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="hidden" class="form-control" name="id_dokter" value="123">
+                                        <input type="hidden" class="form-control" name="id_dokter" id="id_dokter" value="123">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -24,7 +24,7 @@
                                             Judul artikel
                                         </label>
                                         <input type="text" class="form-control" placeholder="masukan nama penyakit"
-                                            name="nama">
+                                            name="nama" id="nama">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -33,13 +33,12 @@
                                         </label>
                                         <input type="text" class="form-control"
                                             placeholder="masukan cara pengobatan / penyegahannya" name="url"
-                                            id="">
+                                            id="url">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-
-                                        <input class="form-control bg-success text-white" type="submit">
+                                        <button class="form-control bg-success text-white" type="button" onclick="submitdata()">submit</button>
                                     </div>
                                 </div>
                 </form>
@@ -48,4 +47,41 @@
     </div>
 
 </div>
+
+<script>
+    function submitdata(){
+    var url = "/input_artikel"
+    id_dokter= $('#id_dokter').val()
+    nama= $('#nama').val()
+    url_artikel= $('#url').val()
+    if (id_dokter == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (nama == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else if (url_artikel == ""){
+      toastr.error('Gagal simpan data!');
+
+    }
+    else {
+      var formData = {
+        id_dokter: $('#id_dokter').val(),
+        nama: $('#nama').val(),
+        url: $('#url').val()
+        };
+      console.log(formData)
+      axios.post(url, formData)
+          .then(function(response) {
+              console.log(response)
+              toastr.success("berhasil tambah data");
+          })
+          .catch(function(error) {
+              toastr.error('Gagal simpan data!');
+          });
+      }
+    }
+    </script>
 {% endblock %}
